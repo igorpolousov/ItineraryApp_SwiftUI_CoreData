@@ -25,6 +25,10 @@
 		C25D8C90298D1F0C0035B7ED /* DayModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C8A298D1F0C0035B7ED /* DayModel+CoreDataProperties.swift */; };
 		C25D8C91298D1F0C0035B7ED /* ActivityModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C8B298D1F0C0035B7ED /* ActivityModel+CoreDataClass.swift */; };
 		C25D8C92298D1F0C0035B7ED /* ActivityModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C8C298D1F0C0035B7ED /* ActivityModel+CoreDataProperties.swift */; };
+		C25D8C94298D1F5B0035B7ED /* ActivityTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C93298D1F5B0035B7ED /* ActivityTypeEnum.swift */; };
+		C25D8C99298D20A30035B7ED /* TripFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C98298D20A30035B7ED /* TripFunctions.swift */; };
+		C25D8C9B298D20AE0035B7ED /* DayFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C9A298D20AE0035B7ED /* DayFunctions.swift */; };
+		C25D8C9D298D20BE0035B7ED /* ActivityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C9C298D20BE0035B7ED /* ActivityFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,10 @@
 		C25D8C8A298D1F0C0035B7ED /* DayModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C25D8C8B298D1F0C0035B7ED /* ActivityModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C25D8C8C298D1F0C0035B7ED /* ActivityModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C25D8C93298D1F5B0035B7ED /* ActivityTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTypeEnum.swift; sourceTree = "<group>"; };
+		C25D8C98298D20A30035B7ED /* TripFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripFunctions.swift; sourceTree = "<group>"; };
+		C25D8C9A298D20AE0035B7ED /* DayFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayFunctions.swift; sourceTree = "<group>"; };
+		C25D8C9C298D20BE0035B7ED /* ActivityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,9 @@
 		C25D8C63298D03070035B7ED /* SwiftUI+CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				C25D8C95298D1FC40035B7ED /* Trip */,
+				C25D8C96298D1FD00035B7ED /* Day */,
+				C25D8C97298D1FDA0035B7ED /* Activity */,
 				C25D8C82298D18480035B7ED /* Views */,
 				C25D8C6A298D03090035B7ED /* Preview Content */,
 				C25D8C83298D1BE20035B7ED /* CoreData */,
@@ -114,9 +125,9 @@
 		C25D8C82298D18480035B7ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C25D8C80298D183D0035B7ED /* ActivitiesView.swift */,
 				C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */,
 				C25D8C66298D03070035B7ED /* TripsView.swift */,
-				C25D8C80298D183D0035B7ED /* ActivitiesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -133,6 +144,31 @@
 				C25D8C84298D1C100035B7ED /* SwiftUI+CoreData.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C25D8C95298D1FC40035B7ED /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				C25D8C98298D20A30035B7ED /* TripFunctions.swift */,
+			);
+			path = Trip;
+			sourceTree = "<group>";
+		};
+		C25D8C96298D1FD00035B7ED /* Day */ = {
+			isa = PBXGroup;
+			children = (
+				C25D8C9A298D20AE0035B7ED /* DayFunctions.swift */,
+			);
+			path = Day;
+			sourceTree = "<group>";
+		};
+		C25D8C97298D1FDA0035B7ED /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				C25D8C93298D1F5B0035B7ED /* ActivityTypeEnum.swift */,
+				C25D8C9C298D20BE0035B7ED /* ActivityFunctions.swift */,
+			);
+			path = Activity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +246,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C25D8C9B298D20AE0035B7ED /* DayFunctions.swift in Sources */,
+				C25D8C9D298D20BE0035B7ED /* ActivityFunctions.swift in Sources */,
 				C25D8C91298D1F0C0035B7ED /* ActivityModel+CoreDataClass.swift in Sources */,
 				C25D8C7F298D16870035B7ED /* Theme.swift in Sources */,
 				C25D8C92298D1F0C0035B7ED /* ActivityModel+CoreDataProperties.swift in Sources */,
@@ -218,7 +256,9 @@
 				C25D8C8E298D1F0C0035B7ED /* TripModel+CoreDataProperties.swift in Sources */,
 				C25D8C90298D1F0C0035B7ED /* DayModel+CoreDataProperties.swift in Sources */,
 				C25D8C65298D03070035B7ED /* SwiftUI_CoreDataApp.swift in Sources */,
+				C25D8C99298D20A30035B7ED /* TripFunctions.swift in Sources */,
 				C25D8C86298D1C100035B7ED /* SwiftUI+CoreData.xcdatamodeld in Sources */,
+				C25D8C94298D1F5B0035B7ED /* ActivityTypeEnum.swift in Sources */,
 				C25D8C8D298D1F0C0035B7ED /* TripModel+CoreDataClass.swift in Sources */,
 				C25D8C81298D183D0035B7ED /* ActivitiesView.swift in Sources */,
 			);
