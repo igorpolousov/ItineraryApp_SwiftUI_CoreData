@@ -14,22 +14,22 @@ struct TripsView: View {
     
     var body: some View {
         
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(Color(Theme.tintColor!))
-                
-            Text("Hello, world!")
-                .frame(maxWidth: .infinity)
-                .background(Color.yellow)
-                .font(Font(Theme.mainFont!))
-                .foregroundColor(Color(Theme.tintColor!))
-                .cornerRadius(10)
-                .shadow(color: .green, radius: 3, x: 3, y: 3)
+        ZStack {
+            Color(Theme.backgroundColor!)
+                .edgesIgnoringSafeArea(.all)
+            
+            Button {
+                // Button code
+            } label: {
+                Image("plus")
+                    .tint(Color.white)
+                    .modifier(PlusButton())
+                    .padding(.top, 680)
+                    .padding(.leading, 280)
+            }
 
-                
+            
         }
-        .padding()
         
         
     }

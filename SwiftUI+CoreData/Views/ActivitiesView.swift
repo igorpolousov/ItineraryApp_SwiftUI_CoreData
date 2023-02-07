@@ -9,16 +9,11 @@ import SwiftUI
 
 struct ActivitiesView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .foregroundColor(Color(Theme.swipeEditColor!))
-            Text("Avtivities view")
-                .font(Font(Theme.mainFont!))
+        ZStack {
+            
         }
-        .padding()
     }
 }
-
 
 struct Activities_Previews: PreviewProvider {
     static var previews: some View {
