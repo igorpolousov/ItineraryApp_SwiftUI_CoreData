@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C22EB7EF29910BB400D94463 /* AddTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7EE29910BB400D94463 /* AddTripView.swift */; };
+		C22EB7F129910BD400D94463 /* AddDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7F029910BD400D94463 /* AddDayView.swift */; };
+		C22EB7F329910BEA00D94463 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7F229910BEA00D94463 /* AddActivityView.swift */; };
+		C22EB7F629910CB800D94463 /* PopUpView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7F529910CB800D94463 /* PopUpView1.swift */; };
+		C22EB7F829910CEB00D94463 /* PopUpViewButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7F729910CEB00D94463 /* PopUpViewButtons.swift */; };
+		C22EB7FA299135EE00D94463 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7F9299135EE00D94463 /* ImagePicker.swift */; };
+		C22EB7FC29926CB500D94463 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7FB29926CB500D94463 /* PopUpView.swift */; };
 		C25D8C65298D03070035B7ED /* SwiftUI_CoreDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */; };
 		C25D8C67298D03070035B7ED /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C66298D03070035B7ED /* TripsView.swift */; };
 		C25D8C69298D03090035B7ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25D8C68298D03090035B7ED /* Assets.xcassets */; };
@@ -33,6 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C22EB7EE29910BB400D94463 /* AddTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripView.swift; sourceTree = "<group>"; };
+		C22EB7F029910BD400D94463 /* AddDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDayView.swift; sourceTree = "<group>"; };
+		C22EB7F229910BEA00D94463 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
+		C22EB7F529910CB800D94463 /* PopUpView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView1.swift; sourceTree = "<group>"; };
+		C22EB7F729910CEB00D94463 /* PopUpViewButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewButtons.swift; sourceTree = "<group>"; };
+		C22EB7F9299135EE00D94463 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C22EB7FB29926CB500D94463 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		C25D8C61298D03070035B7ED /* SwiftUI+CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI+CoreData.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_CoreDataApp.swift; sourceTree = "<group>"; };
 		C25D8C66298D03070035B7ED /* TripsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
@@ -71,6 +85,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C22EB7F429910C8A00D94463 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				C22EB7F529910CB800D94463 /* PopUpView1.swift */,
+				C22EB7F729910CEB00D94463 /* PopUpViewButtons.swift */,
+				C22EB7F9299135EE00D94463 /* ImagePicker.swift */,
+				C22EB7FB29926CB500D94463 /* PopUpView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		C25D8C58298D03070035B7ED = {
 			isa = PBXGroup;
 			children = (
@@ -91,13 +116,15 @@
 		C25D8C63298D03070035B7ED /* SwiftUI+CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */,
+				C25D8C6A298D03090035B7ED /* Preview Content */,
 				C25D8C95298D1FC40035B7ED /* Trip */,
 				C25D8C96298D1FD00035B7ED /* Day */,
 				C25D8C97298D1FDA0035B7ED /* Activity */,
 				C25D8C82298D18480035B7ED /* Views */,
-				C25D8C6A298D03090035B7ED /* Preview Content */,
 				C25D8C83298D1BE20035B7ED /* CoreData */,
 				C25D8C72298D03BB0035B7ED /* Assets */,
+				C22EB7F429910C8A00D94463 /* CustomViews */,
 			);
 			path = "SwiftUI+CoreData";
 			sourceTree = "<group>";
@@ -128,8 +155,10 @@
 			isa = PBXGroup;
 			children = (
 				C25D8C80298D183D0035B7ED /* ActivitiesView.swift */,
-				C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */,
 				C25D8C66298D03070035B7ED /* TripsView.swift */,
+				C22EB7EE29910BB400D94463 /* AddTripView.swift */,
+				C22EB7F029910BD400D94463 /* AddDayView.swift */,
+				C22EB7F229910BEA00D94463 /* AddActivityView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,8 +282,13 @@
 				C25D8C9D298D20BE0035B7ED /* ActivityFunctions.swift in Sources */,
 				C25D8C91298D1F0C0035B7ED /* ActivityModel+CoreDataClass.swift in Sources */,
 				C25D8C7F298D16870035B7ED /* Theme.swift in Sources */,
+				C22EB7FC29926CB500D94463 /* PopUpView.swift in Sources */,
 				C25D8C92298D1F0C0035B7ED /* ActivityModel+CoreDataProperties.swift in Sources */,
+				C22EB7F629910CB800D94463 /* PopUpView1.swift in Sources */,
+				C22EB7EF29910BB400D94463 /* AddTripView.swift in Sources */,
+				C22EB7FA299135EE00D94463 /* ImagePicker.swift in Sources */,
 				C25D8C67298D03070035B7ED /* TripsView.swift in Sources */,
+				C22EB7F129910BD400D94463 /* AddDayView.swift in Sources */,
 				C25D8C8F298D1F0C0035B7ED /* DayModel+CoreDataClass.swift in Sources */,
 				C25D8C9F298D25490035B7ED /* CoreDataStack.swift in Sources */,
 				C25D8C8E298D1F0C0035B7ED /* TripModel+CoreDataProperties.swift in Sources */,
@@ -263,7 +297,9 @@
 				C25D8C99298D20A30035B7ED /* TripFunctions.swift in Sources */,
 				C25D8C86298D1C100035B7ED /* SwiftUI+CoreData.xcdatamodeld in Sources */,
 				C25D8C94298D1F5B0035B7ED /* ActivityTypeEnum.swift in Sources */,
+				C22EB7F829910CEB00D94463 /* PopUpViewButtons.swift in Sources */,
 				C25D8C8D298D1F0C0035B7ED /* TripModel+CoreDataClass.swift in Sources */,
+				C22EB7F329910BEA00D94463 /* AddActivityView.swift in Sources */,
 				C25D8C81298D183D0035B7ED /* ActivitiesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

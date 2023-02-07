@@ -28,6 +28,7 @@ class CoreDataStack {
     private lazy var managedContext: NSManagedObjectContext = {
         return self.storeContainer.viewContext
     }()
+     
     
     func saveContext() {
         guard managedContext.hasChanges else {return}
