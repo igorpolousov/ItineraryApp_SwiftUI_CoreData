@@ -20,8 +20,7 @@ struct AddTripView: View {
             Color.gray
                 .opacity(0.4)
                 .edgesIgnoringSafeArea(.all)
-                .zIndex(0)
-            
+        
             ZStack() {
                 
                 RoundedRectangle(cornerRadius: 10)

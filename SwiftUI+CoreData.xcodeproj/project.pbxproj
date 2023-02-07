@@ -13,6 +13,7 @@
 		C22EB7FA299135EE00D94463 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7F9299135EE00D94463 /* ImagePicker.swift */; };
 		C22EB7FC29926CB500D94463 /* AddTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7FB29926CB500D94463 /* AddTripView.swift */; };
 		C22EB7FE2992792600D94463 /* PlusButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7FD2992792600D94463 /* PlusButtonModifier.swift */; };
+		C22EB8032992847900D94463 /* AddViewsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB8022992847900D94463 /* AddViewsModifier.swift */; };
 		C25D8C65298D03070035B7ED /* SwiftUI_CoreDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */; };
 		C25D8C67298D03070035B7ED /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C66298D03070035B7ED /* TripsView.swift */; };
 		C25D8C69298D03090035B7ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25D8C68298D03090035B7ED /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		C22EB7F9299135EE00D94463 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C22EB7FB29926CB500D94463 /* AddTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripView.swift; sourceTree = "<group>"; };
 		C22EB7FD2992792600D94463 /* PlusButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButtonModifier.swift; sourceTree = "<group>"; };
+		C22EB8022992847900D94463 /* AddViewsModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewsModifier.swift; sourceTree = "<group>"; };
 		C25D8C61298D03070035B7ED /* SwiftUI+CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI+CoreData.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_CoreDataApp.swift; sourceTree = "<group>"; };
 		C25D8C66298D03070035B7ED /* TripsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
@@ -88,9 +90,36 @@
 			children = (
 				C22EB7F729910CEB00D94463 /* PopUpViewButtonsModifier.swift */,
 				C22EB7FD2992792600D94463 /* PlusButtonModifier.swift */,
+				C22EB8022992847900D94463 /* AddViewsModifier.swift */,
 				C22EB7F9299135EE00D94463 /* ImagePicker.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		C22EB7FF299283B300D94463 /* TripViews */ = {
+			isa = PBXGroup;
+			children = (
+				C25D8C66298D03070035B7ED /* TripsView.swift */,
+				C22EB7FB29926CB500D94463 /* AddTripView.swift */,
+			);
+			path = TripViews;
+			sourceTree = "<group>";
+		};
+		C22EB800299283D000D94463 /* DayViews */ = {
+			isa = PBXGroup;
+			children = (
+				C22EB7F029910BD400D94463 /* AddDayView.swift */,
+			);
+			path = DayViews;
+			sourceTree = "<group>";
+		};
+		C22EB801299283DE00D94463 /* ActivityViews */ = {
+			isa = PBXGroup;
+			children = (
+				C25D8C80298D183D0035B7ED /* ActivitiesView.swift */,
+				C22EB7F229910BEA00D94463 /* AddActivityView.swift */,
+			);
+			path = ActivityViews;
 			sourceTree = "<group>";
 		};
 		C25D8C58298D03070035B7ED = {
@@ -115,9 +144,9 @@
 			children = (
 				C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */,
 				C25D8C6A298D03090035B7ED /* Preview Content */,
-				C25D8C95298D1FC40035B7ED /* Trip */,
-				C25D8C96298D1FD00035B7ED /* Day */,
-				C25D8C97298D1FDA0035B7ED /* Activity */,
+				C25D8C95298D1FC40035B7ED /* TripFunctions */,
+				C25D8C96298D1FD00035B7ED /* DayFunctions */,
+				C25D8C97298D1FDA0035B7ED /* ActivityFunctions */,
 				C25D8C82298D18480035B7ED /* Views */,
 				C25D8C83298D1BE20035B7ED /* CoreData */,
 				C25D8C72298D03BB0035B7ED /* Assets */,
@@ -151,11 +180,9 @@
 		C25D8C82298D18480035B7ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C25D8C66298D03070035B7ED /* TripsView.swift */,
-				C22EB7FB29926CB500D94463 /* AddTripView.swift */,
-				C25D8C80298D183D0035B7ED /* ActivitiesView.swift */,
-				C22EB7F029910BD400D94463 /* AddDayView.swift */,
-				C22EB7F229910BEA00D94463 /* AddActivityView.swift */,
+				C22EB7FF299283B300D94463 /* TripViews */,
+				C22EB800299283D000D94463 /* DayViews */,
+				C22EB801299283DE00D94463 /* ActivityViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,29 +202,29 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		C25D8C95298D1FC40035B7ED /* Trip */ = {
+		C25D8C95298D1FC40035B7ED /* TripFunctions */ = {
 			isa = PBXGroup;
 			children = (
 				C25D8C98298D20A30035B7ED /* TripFunctions.swift */,
 			);
-			path = Trip;
+			path = TripFunctions;
 			sourceTree = "<group>";
 		};
-		C25D8C96298D1FD00035B7ED /* Day */ = {
+		C25D8C96298D1FD00035B7ED /* DayFunctions */ = {
 			isa = PBXGroup;
 			children = (
 				C25D8C9A298D20AE0035B7ED /* DayFunctions.swift */,
 			);
-			path = Day;
+			path = DayFunctions;
 			sourceTree = "<group>";
 		};
-		C25D8C97298D1FDA0035B7ED /* Activity */ = {
+		C25D8C97298D1FDA0035B7ED /* ActivityFunctions */ = {
 			isa = PBXGroup;
 			children = (
 				C25D8C93298D1F5B0035B7ED /* ActivityTypeEnum.swift */,
 				C25D8C9C298D20BE0035B7ED /* ActivityFunctions.swift */,
 			);
-			path = Activity;
+			path = ActivityFunctions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +307,7 @@
 				C25D8C91298D1F0C0035B7ED /* ActivityModel+CoreDataClass.swift in Sources */,
 				C25D8C7F298D16870035B7ED /* Theme.swift in Sources */,
 				C22EB7FC29926CB500D94463 /* AddTripView.swift in Sources */,
+				C22EB8032992847900D94463 /* AddViewsModifier.swift in Sources */,
 				C25D8C92298D1F0C0035B7ED /* ActivityModel+CoreDataProperties.swift in Sources */,
 				C22EB7FA299135EE00D94463 /* ImagePicker.swift in Sources */,
 				C25D8C67298D03070035B7ED /* TripsView.swift in Sources */,

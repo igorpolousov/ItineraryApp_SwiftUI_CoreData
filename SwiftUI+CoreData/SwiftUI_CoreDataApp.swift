@@ -12,8 +12,9 @@ struct SwiftUI_CoreDataApp: App {
   
     var body: some Scene {
         WindowGroup {
-            TripsView()
+            //TripsView()
             //PopUpView()
+            AddDayView()
         }
     }
 }
