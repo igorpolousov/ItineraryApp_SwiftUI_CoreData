@@ -14,6 +14,8 @@
 		C22EB7FC29926CB500D94463 /* AddTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7FB29926CB500D94463 /* AddTripView.swift */; };
 		C22EB7FE2992792600D94463 /* PlusButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7FD2992792600D94463 /* PlusButtonModifier.swift */; };
 		C22EB8032992847900D94463 /* AddViewsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB8022992847900D94463 /* AddViewsModifier.swift */; };
+		C22EB8052992979000D94463 /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB8042992979000D94463 /* TextFieldModifier.swift */; };
+		C22EB8092993905700D94463 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB8082993905700D94463 /* DateExtension.swift */; };
 		C25D8C65298D03070035B7ED /* SwiftUI_CoreDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */; };
 		C25D8C67298D03070035B7ED /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C66298D03070035B7ED /* TripsView.swift */; };
 		C25D8C69298D03090035B7ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25D8C68298D03090035B7ED /* Assets.xcassets */; };
@@ -47,6 +49,8 @@
 		C22EB7FB29926CB500D94463 /* AddTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripView.swift; sourceTree = "<group>"; };
 		C22EB7FD2992792600D94463 /* PlusButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButtonModifier.swift; sourceTree = "<group>"; };
 		C22EB8022992847900D94463 /* AddViewsModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewsModifier.swift; sourceTree = "<group>"; };
+		C22EB8042992979000D94463 /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
+		C22EB8082993905700D94463 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		C25D8C61298D03070035B7ED /* SwiftUI+CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI+CoreData.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_CoreDataApp.swift; sourceTree = "<group>"; };
 		C25D8C66298D03070035B7ED /* TripsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
@@ -85,15 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C22EB7F429910C8A00D94463 /* CustomViews */ = {
+		C22EB7F429910C8A00D94463 /* CustomViews+Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				C22EB7F729910CEB00D94463 /* PopUpViewButtonsModifier.swift */,
-				C22EB7FD2992792600D94463 /* PlusButtonModifier.swift */,
-				C22EB8022992847900D94463 /* AddViewsModifier.swift */,
+				C22EB8072993902D00D94463 /* Extensions */,
+				C22EB8062993900C00D94463 /* Modifiers */,
 				C22EB7F9299135EE00D94463 /* ImagePicker.swift */,
 			);
-			path = CustomViews;
+			path = "CustomViews+Modifiers";
 			sourceTree = "<group>";
 		};
 		C22EB7FF299283B300D94463 /* TripViews */ = {
@@ -120,6 +123,25 @@
 				C22EB7F229910BEA00D94463 /* AddActivityView.swift */,
 			);
 			path = ActivityViews;
+			sourceTree = "<group>";
+		};
+		C22EB8062993900C00D94463 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				C22EB8042992979000D94463 /* TextFieldModifier.swift */,
+				C22EB8022992847900D94463 /* AddViewsModifier.swift */,
+				C22EB7FD2992792600D94463 /* PlusButtonModifier.swift */,
+				C22EB7F729910CEB00D94463 /* PopUpViewButtonsModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		C22EB8072993902D00D94463 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C22EB8082993905700D94463 /* DateExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C25D8C58298D03070035B7ED = {
@@ -150,7 +172,7 @@
 				C25D8C82298D18480035B7ED /* Views */,
 				C25D8C83298D1BE20035B7ED /* CoreData */,
 				C25D8C72298D03BB0035B7ED /* Assets */,
-				C22EB7F429910C8A00D94463 /* CustomViews */,
+				C22EB7F429910C8A00D94463 /* CustomViews+Modifiers */,
 			);
 			path = "SwiftUI+CoreData";
 			sourceTree = "<group>";
@@ -313,6 +335,7 @@
 				C25D8C67298D03070035B7ED /* TripsView.swift in Sources */,
 				C22EB7F129910BD400D94463 /* AddDayView.swift in Sources */,
 				C22EB7FE2992792600D94463 /* PlusButtonModifier.swift in Sources */,
+				C22EB8092993905700D94463 /* DateExtension.swift in Sources */,
 				C25D8C8F298D1F0C0035B7ED /* DayModel+CoreDataClass.swift in Sources */,
 				C25D8C9F298D25490035B7ED /* CoreDataStack.swift in Sources */,
 				C25D8C8E298D1F0C0035B7ED /* TripModel+CoreDataProperties.swift in Sources */,
@@ -320,6 +343,7 @@
 				C25D8C65298D03070035B7ED /* SwiftUI_CoreDataApp.swift in Sources */,
 				C25D8C99298D20A30035B7ED /* TripFunctions.swift in Sources */,
 				C25D8C86298D1C100035B7ED /* SwiftUI+CoreData.xcdatamodeld in Sources */,
+				C22EB8052992979000D94463 /* TextFieldModifier.swift in Sources */,
 				C25D8C94298D1F5B0035B7ED /* ActivityTypeEnum.swift in Sources */,
 				C22EB7F829910CEB00D94463 /* PopUpViewButtonsModifier.swift in Sources */,
 				C25D8C8D298D1F0C0035B7ED /* TripModel+CoreDataClass.swift in Sources */,

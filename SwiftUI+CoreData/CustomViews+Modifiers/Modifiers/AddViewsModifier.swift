@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddViewsModifier: ViewModifier {
-    let width: CGFloat?
+    let width: CGFloat = 350
     let height: CGFloat?
     let bottomPadding: CGFloat?
     

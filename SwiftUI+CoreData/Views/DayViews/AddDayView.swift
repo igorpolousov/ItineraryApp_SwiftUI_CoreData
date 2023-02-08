@@ -23,7 +23,7 @@ struct AddDayView: View {
                 
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color(Theme.backgroundColor!))
-                    .modifier(AddViewsModifier(width: 350, height: 230, bottomPadding: 200))
+                    .modifier(AddViewsModifier(height: 230, bottomPadding: 200))
                 
                 VStack {
 
@@ -38,8 +38,7 @@ struct AddDayView: View {
                         .font(Font(Theme.dayFont!))
                     
                     TextField("  Day description (Optional)", text: $dayDescription)
-                        .frame(width: 330)
-                        .frame(height: 40)
+                        .frame(width: 330, height: 40)
                         .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
                         .padding(.leading, 10)
                         .padding(.trailing, 10)

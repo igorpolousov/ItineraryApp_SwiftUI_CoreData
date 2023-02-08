@@ -61,8 +61,7 @@ struct AddTripView: View {
                     TextField(
                         "  Enter trip name",
                         text: $tripName)
-                    .frame(width: 330)
-                    .frame(height: 40)
+                    .frame(width: 330, height: 40)
                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
                     .padding(.leading, 10)
                     .padding(.trailing, 10)
