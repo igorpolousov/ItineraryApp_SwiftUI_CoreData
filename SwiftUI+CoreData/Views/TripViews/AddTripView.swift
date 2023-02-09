@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct AddTripView: View {
     
@@ -14,6 +15,11 @@ struct AddTripView: View {
     @State private var image: Image?
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    @State var coreDataStack: CoreDataStack
+    @State var mockTrips: [String]
     
     var body: some View {
         ZStack {
@@ -25,16 +31,17 @@ struct AddTripView: View {
                 
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color(Theme.backgroundColor!))
-                    .frame(width: 350, height: 200)
-                    .padding(.bottom, 250)
-                    .shadow(color: Color.black, radius: 10, x: 3, y: 3)
+                    .modifier(AddViewsModifier(height: 200, bottomPadding: 330))
                 
                 image?
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 350, height: 200)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 200)
                     .cornerRadius(10)
-                    .padding(.bottom, 250)
+                    .padding(.bottom, 330)
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
                 
                 VStack{
                     
@@ -61,28 +68,30 @@ struct AddTripView: View {
                     TextField(
                         "  Enter trip name",
                         text: $tripName)
-                    .frame(width: 330, height: 40)
-                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
-                    .padding(.leading, 10)
-                    .padding(.trailing, 10)
+                    .modifier(TextFieldModifier())
                     
                     HStack {
                         Button("Cancel") {
-                            // here wil be Cancel action
+                            presentationMode.wrappedValue.dismiss()
                         }
                         .modifier(PopUpButton( cornerRadius: 10))
                         
                         Spacer()
                         
                         Button("Save") {
-                            // Here will be save action
+                            TripFunctions.createTrip(tripModelTitle: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack)
+                            mockTrips.append(tripName)
+                            presentationMode.wrappedValue.dismiss()
+                            print(mockTrips)
                         }
                         .modifier(PopUpButton(cornerRadius: 10))
                     }
-                    .frame(width: 360)
+                    .frame(maxWidth: .infinity)
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
                     
                 }
-                .padding(.bottom, 280)
+                .padding(.bottom, 340)
                 .onChange(of: inputImage) { _ in
                     loadImage()
                 }
@@ -103,6 +112,6 @@ struct AddTripView: View {
 
 struct AddTripPreview: PreviewProvider {
     static var previews: some View {
-        AddTripView()
+        AddTripView(coreDataStack: CoreDataStack(modelName: "SwiftUI+CoreData"), mockTrips: [])
     }
 }

@@ -8,27 +8,31 @@
 import SwiftUI
 
 struct ActivitiesView: View {
+    
+    //var trip: TripModel?
+    var title: String
+    
     var body: some View {
         ZStack {
             Color(Theme.backgroundColor!)
                 .edgesIgnoringSafeArea(.all)
-            
+                .overlay(
             Button {
-                // Plus button action
+                // Code here
             } label: {
                 Image("plus")
-                    .tint(Color.white)
-                    .modifier(PlusButton())
-                    .padding(.top, 680)
-                    .padding(.leading, 280)
+                    
+                    .modifier(PlusButtonModifier())
             }
-
+                .padding(), alignment: .bottomTrailing)
         }
+        .navigationTitle(title)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct Activities_Previews: PreviewProvider {
     static var previews: some View {
-        ActivitiesView()
+        ActivitiesView(title: "hello")
     }
 }

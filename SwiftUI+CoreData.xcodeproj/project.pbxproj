@@ -16,6 +16,8 @@
 		C22EB8032992847900D94463 /* AddViewsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB8022992847900D94463 /* AddViewsModifier.swift */; };
 		C22EB8052992979000D94463 /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB8042992979000D94463 /* TextFieldModifier.swift */; };
 		C22EB8092993905700D94463 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB8082993905700D94463 /* DateExtension.swift */; };
+		C22EB80C299395E600D94463 /* TripsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB80B299395E600D94463 /* TripsData.swift */; };
+		C22EB80E2993B40500D94463 /* ViewTransitionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB80D2993B40500D94463 /* ViewTransitionExtension.swift */; };
 		C25D8C65298D03070035B7ED /* SwiftUI_CoreDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */; };
 		C25D8C67298D03070035B7ED /* TripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C66298D03070035B7ED /* TripsView.swift */; };
 		C25D8C69298D03090035B7ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25D8C68298D03090035B7ED /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 		C25D8C9B298D20AE0035B7ED /* DayFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C9A298D20AE0035B7ED /* DayFunctions.swift */; };
 		C25D8C9D298D20BE0035B7ED /* ActivityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C9C298D20BE0035B7ED /* ActivityFunctions.swift */; };
 		C25D8C9F298D25490035B7ED /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C9E298D25490035B7ED /* CoreDataStack.swift */; };
+		C29B996C2993C82600441788 /* TODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29B996B2993C82600441788 /* TODO.swift */; };
+		C29B996E2993E7BB00441788 /* CustomRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29B996D2993E7BB00441788 /* CustomRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +55,8 @@
 		C22EB8022992847900D94463 /* AddViewsModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewsModifier.swift; sourceTree = "<group>"; };
 		C22EB8042992979000D94463 /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
 		C22EB8082993905700D94463 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		C22EB80B299395E600D94463 /* TripsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsData.swift; sourceTree = "<group>"; };
+		C22EB80D2993B40500D94463 /* ViewTransitionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionExtension.swift; sourceTree = "<group>"; };
 		C25D8C61298D03070035B7ED /* SwiftUI+CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI+CoreData.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_CoreDataApp.swift; sourceTree = "<group>"; };
 		C25D8C66298D03070035B7ED /* TripsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsView.swift; sourceTree = "<group>"; };
@@ -76,6 +82,8 @@
 		C25D8C9A298D20AE0035B7ED /* DayFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayFunctions.swift; sourceTree = "<group>"; };
 		C25D8C9C298D20BE0035B7ED /* ActivityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFunctions.swift; sourceTree = "<group>"; };
 		C25D8C9E298D25490035B7ED /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		C29B996B2993C82600441788 /* TODO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
+		C29B996D2993E7BB00441788 /* CustomRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +100,9 @@
 		C22EB7F429910C8A00D94463 /* CustomViews+Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				C29B996F2993E96C00441788 /* CustomViews */,
 				C22EB8072993902D00D94463 /* Extensions */,
 				C22EB8062993900C00D94463 /* Modifiers */,
-				C22EB7F9299135EE00D94463 /* ImagePicker.swift */,
 			);
 			path = "CustomViews+Modifiers";
 			sourceTree = "<group>";
@@ -140,13 +148,23 @@
 			isa = PBXGroup;
 			children = (
 				C22EB8082993905700D94463 /* DateExtension.swift */,
+				C22EB80D2993B40500D94463 /* ViewTransitionExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C22EB80A299395C600D94463 /* TripsData */ = {
+			isa = PBXGroup;
+			children = (
+				C22EB80B299395E600D94463 /* TripsData.swift */,
+			);
+			path = TripsData;
 			sourceTree = "<group>";
 		};
 		C25D8C58298D03070035B7ED = {
 			isa = PBXGroup;
 			children = (
+				C29B996B2993C82600441788 /* TODO.swift */,
 				C25D8C63298D03070035B7ED /* SwiftUI+CoreData */,
 				C25D8C7D298D12CD0035B7ED /* SwiftUI-CoreData-Info.plist */,
 				C25D8C62298D03070035B7ED /* Products */,
@@ -165,13 +183,14 @@
 			isa = PBXGroup;
 			children = (
 				C25D8C64298D03070035B7ED /* SwiftUI_CoreDataApp.swift */,
+				C25D8C83298D1BE20035B7ED /* CoreData */,
+				C25D8C72298D03BB0035B7ED /* Assets */,
+				C22EB80A299395C600D94463 /* TripsData */,
 				C25D8C6A298D03090035B7ED /* Preview Content */,
 				C25D8C95298D1FC40035B7ED /* TripFunctions */,
 				C25D8C96298D1FD00035B7ED /* DayFunctions */,
 				C25D8C97298D1FDA0035B7ED /* ActivityFunctions */,
 				C25D8C82298D18480035B7ED /* Views */,
-				C25D8C83298D1BE20035B7ED /* CoreData */,
-				C25D8C72298D03BB0035B7ED /* Assets */,
 				C22EB7F429910C8A00D94463 /* CustomViews+Modifiers */,
 			);
 			path = "SwiftUI+CoreData";
@@ -247,6 +266,15 @@
 				C25D8C9C298D20BE0035B7ED /* ActivityFunctions.swift */,
 			);
 			path = ActivityFunctions;
+			sourceTree = "<group>";
+		};
+		C29B996F2993E96C00441788 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				C22EB7F9299135EE00D94463 /* ImagePicker.swift */,
+				C29B996D2993E7BB00441788 /* CustomRow.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,7 +354,9 @@
 			files = (
 				C25D8C9B298D20AE0035B7ED /* DayFunctions.swift in Sources */,
 				C25D8C9D298D20BE0035B7ED /* ActivityFunctions.swift in Sources */,
+				C22EB80C299395E600D94463 /* TripsData.swift in Sources */,
 				C25D8C91298D1F0C0035B7ED /* ActivityModel+CoreDataClass.swift in Sources */,
+				C29B996E2993E7BB00441788 /* CustomRow.swift in Sources */,
 				C25D8C7F298D16870035B7ED /* Theme.swift in Sources */,
 				C22EB7FC29926CB500D94463 /* AddTripView.swift in Sources */,
 				C22EB8032992847900D94463 /* AddViewsModifier.swift in Sources */,
@@ -339,6 +369,7 @@
 				C25D8C8F298D1F0C0035B7ED /* DayModel+CoreDataClass.swift in Sources */,
 				C25D8C9F298D25490035B7ED /* CoreDataStack.swift in Sources */,
 				C25D8C8E298D1F0C0035B7ED /* TripModel+CoreDataProperties.swift in Sources */,
+				C22EB80E2993B40500D94463 /* ViewTransitionExtension.swift in Sources */,
 				C25D8C90298D1F0C0035B7ED /* DayModel+CoreDataProperties.swift in Sources */,
 				C25D8C65298D03070035B7ED /* SwiftUI_CoreDataApp.swift in Sources */,
 				C25D8C99298D20A30035B7ED /* TripFunctions.swift in Sources */,
@@ -349,6 +380,7 @@
 				C25D8C8D298D1F0C0035B7ED /* TripModel+CoreDataClass.swift in Sources */,
 				C22EB7F329910BEA00D94463 /* AddActivityView.swift in Sources */,
 				C25D8C81298D183D0035B7ED /* ActivitiesView.swift in Sources */,
+				C29B996C2993C82600441788 /* TODO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

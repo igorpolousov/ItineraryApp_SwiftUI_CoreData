@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct AddViewsModifier: ViewModifier {
-    let width: CGFloat = 350
     let height: CGFloat?
     let bottomPadding: CGFloat?
     
     func body(content: Content) -> some View {
         content
-            .frame(width: width,height: height)
+            .frame(maxWidth: .infinity)
+            .frame(height: height)
             .padding(.bottom, bottomPadding)
+            .padding(.leading, 20)
+            .padding(.trailing, 20)
             .shadow(color: Color.black, radius: 10, x: 3, y: 3)
     }
 }

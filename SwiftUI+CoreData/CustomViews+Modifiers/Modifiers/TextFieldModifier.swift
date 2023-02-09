@@ -11,10 +11,11 @@ struct TextFieldModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .frame(width: 330, height: 40)
+            .frame(height: 40)
+            .frame(maxWidth: .infinity)
             .background(RoundedRectangle(cornerRadius: 5).foregroundColor(Color.white))
-            .padding(.leading, 10)
-            .padding(.trailing, 10)
+            .padding(.leading, 30)
+            .padding(.trailing, 30)
     }
     
 }

@@ -6,11 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
 class TripFunctions {
     // create trip
-    static func createTrip() {
-        
+    static func createTrip(tripModelTitle: String, tripModelImage: UIImage? = nil, coreDataStack: CoreDataStack) {
+        let tripModel = TripModel(context: coreDataStack.managedContext)
+        tripModel.title = tripModelTitle
+        tripModel.image = tripModelImage?.pngData()
+        tripModel.id = UUID()
+        TripsData.trips.append(tripModel)
+        coreDataStack.saveContext()
     }
     
     // read trip form core data
