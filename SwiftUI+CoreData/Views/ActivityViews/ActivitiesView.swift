@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ActivitiesView: View {
     
+    @State private var showingAddDayView = false
     @State private var showingAddActivityView = false
+    @State private var showingActionSheet = false
     
     //var trip: TripModel?
     var title: String
@@ -19,14 +21,31 @@ struct ActivitiesView: View {
             Color(Theme.backgroundColor!)
                 .edgesIgnoringSafeArea(.all)
                 .overlay(
-            Button(action: {
-                showingAddActivityView.toggle()
-            }, label: {
-                Text("+")
-                    .modifier(PlusButtonModifier())
-            }).overCurrentContext(isPresented: $showingAddActivityView, content: {
+                    Button(action: {
+                        showingAddActivityView.toggle()
+                    }, label: {
+                        Text("+")
+                            .modifier(PlusButtonModifier())
+                    })
+                    .actionSheet(isPresented: $showingActionSheet, content: {
+                        ActionSheet(title: Text("What would you like to select?"),
+                                    buttons: [
+                                        .default(Text("Add Day")) {
+                                            showingAddDayView.toggle()
+                                        },
+                                        .default(Text("Add Activity")) {
+                                            showingAddActivityView.toggle()
+                                        }
+                                    ])
+                    })
+            .overCurrentContext(isPresented: $showingAddActivityView, content: {
                 return AnyView (
                     AddActivityView()
+                )
+            })
+            .overCurrentContext(isPresented: $showingAddActivityView, content: {
+                return AnyView (
+                    AddDayView()
                 )
             })
                 .padding(), alignment: .bottomTrailing)
