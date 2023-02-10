@@ -25,7 +25,8 @@ extension View {
             
             uiHost.modalPresentationStyle = .overCurrentContext
                         uiHost.modalTransitionStyle = modalPresentationStyle
-                        uiHost.view.backgroundColor = UIColor.clear
+            uiHost.view.backgroundColor = UIColor.clear
+            
             
             let rootVC = UIApplication.shared.windows.first?.rootViewController
             rootVC?.present(uiHost, animated: showWithAnimate, completion: nil)

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ActivitiesView: View {
     
+    @State private var showingAddActivityView = false
+    
     //var trip: TripModel?
     var title: String
     
@@ -17,13 +19,16 @@ struct ActivitiesView: View {
             Color(Theme.backgroundColor!)
                 .edgesIgnoringSafeArea(.all)
                 .overlay(
-            Button {
-                // Code here
-            } label: {
-                Image("plus")
-                    
+            Button(action: {
+                showingAddActivityView.toggle()
+            }, label: {
+                Text("+")
                     .modifier(PlusButtonModifier())
-            }
+            }).overCurrentContext(isPresented: $showingAddActivityView, content: {
+                return AnyView (
+                    AddActivityView()
+                )
+            })
                 .padding(), alignment: .bottomTrailing)
         }
         .navigationTitle(title)

@@ -10,6 +10,6 @@
  
  data binding or envirment object
  
- ?? How to tripm image to frame size(clip to bounds)
+how to remove alert in View transition extension?
  
  */

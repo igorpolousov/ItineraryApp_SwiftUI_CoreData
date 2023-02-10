@@ -41,21 +41,21 @@ struct TripsView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            Button {
+                            Button(action: {
                                 showingAddTripView.toggle()
-                            } label: {
+                            }, label: {
                                 Text("+")
                                     .modifier(PlusButtonModifier())
                                 
-                            }
+                            }).overCurrentContext(isPresented: $showingAddTripView, showWithAnimate: true, dismissWithAnimate: true, modalPresentationStyle: .crossDissolve, content: {
+                                return AnyView (
+                                    AddTripView(coreDataStack: coreDataStack, mockTrips: mockTrips))
+                            })
                             .frame(width: 60, height: 60)
-                            .padding(.trailing, 20)
+                            .padding(.trailing, 10)
                         }
                     }
                 }
-            }
-            .sheet(isPresented: $showingAddTripView) {
-                AddTripView(coreDataStack: coreDataStack, mockTrips: mockTrips)
             }
         }
     }

@@ -11,6 +11,7 @@ struct AddActivityView: View {
     
     @State private var taskDescription: String = ""
     @State private var additionalDescription: String = ""
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var selectedDate: String = Date().dateFormatter()
     @State private var pickerMockData = [Date().dateFormatter(), Date().add(days: 1).dateFormatter(), Date().add(days: 2).dateFormatter(), Date().add(days: 3).dateFormatter()]
@@ -18,8 +19,8 @@ struct AddActivityView: View {
     var body: some View {
         
         ZStack {
-            Color.gray
-                .opacity(0.4)
+            Color.black
+                .opacity(0.45)
                 .edgesIgnoringSafeArea(.all)
             
             
@@ -39,20 +40,27 @@ struct AddActivityView: View {
                 Picker("Choose date", selection: $selectedDate) {
                     ForEach(pickerMockData, id: \.self) { date in
                         Text("\(date)")
+                            .font(Font(Theme.readFont!))
                     }
                 }
                 .frame(width: 330, height: 40)
                 .font(Font(Theme.dayFont!))
-                .tint(Color(Theme.tintColor!))
+                .tint(Color.black)
                 
                 
-                HStack {
+                HStack(spacing: 20) {
                     Image("hotel")
+                        .foregroundColor(Color(Theme.tintColor!))
                     Image("taxi")
+                        .foregroundColor(Color(Theme.tintColor!))
                     Image("train")
+                        .foregroundColor(Color(Theme.tintColor!))
                     Image("food")
+                        .foregroundColor(Color(Theme.tintColor!))
                     Image("flight")
+                        .foregroundColor(Color(Theme.tintColor!))
                 }
+                
                 
                 TextField("  Add Activity Description", text: $taskDescription)
                     .modifier(TextFieldModifier())
@@ -62,14 +70,15 @@ struct AddActivityView: View {
                 
                 HStack {
                     Button("Cancel") {
-                        // here wil be Cancel action
+                        presentationMode.wrappedValue.dismiss()
                     }
                     .modifier(PopUpButton( cornerRadius: 10))
                     
                     Spacer()
                     
                     Button("Save") {
-                        // Here will be save action
+                        // Update trip Activity
+                        presentationMode.wrappedValue.dismiss()
                     }
                     .modifier(PopUpButton(cornerRadius: 10))
                 }

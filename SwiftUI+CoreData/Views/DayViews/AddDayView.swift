@@ -12,11 +12,12 @@ import SwiftUI
 struct AddDayView: View {
     @State private var date = Date()
     @State private var dayDescription = ""
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack {
-            Color.gray
-                .opacity(0.4)
+            Color.black
+                .opacity(0.45)
                 .edgesIgnoringSafeArea(.all)
             
             ZStack {
@@ -45,14 +46,15 @@ struct AddDayView: View {
                     
                     HStack {
                         Button("Cancel") {
-                            // here wil be Cancel action
+                            presentationMode.wrappedValue.dismiss()
                         }
                         .modifier(PopUpButton( cornerRadius: 10))
                         
                         Spacer()
                         
                         Button("Save") {
-                            // Here will be save action
+                            // Update days in trip model
+                            presentationMode.wrappedValue.dismiss()
                         }
                         .modifier(PopUpButton(cornerRadius: 10))
                     }
