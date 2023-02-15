@@ -38,14 +38,16 @@ struct ActivitiesView: View {
                                         }
                                     ])
                     })
-            .overCurrentContext(isPresented: $showingAddActivityView, content: {
+//            .overCurrentContext(isPresented: $showingAddActivityView, content: {
+//                return AnyView (
+//                    AddActivityView()
+//                )
+//            })
+            .overCurrentContext(isPresented: $showingAddDayView, content: {
                 return AnyView (
-                    AddActivityView()
-                )
-            })
-            .overCurrentContext(isPresented: $showingAddActivityView, content: {
-                return AnyView (
-                    AddDayView()
+                    AddDayView(onEnd: {
+                        showingAddDayView.toggle()
+                    })
                 )
             })
                 .padding(), alignment: .bottomTrailing)
