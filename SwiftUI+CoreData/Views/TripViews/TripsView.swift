@@ -9,16 +9,16 @@ import SwiftUI
 
 struct TripsView: View {
     
-    var mockTrips: [String] = ["Trip 1", "Trip 2", "Trip 3"," Trip 4", " Trip 5"," Trip 5"," Trip 5"," Trip 5"," Trip 5"]
-    
     @State private var showingAddTripView = false
     private var coreDataStack = CoreDataStack(modelName: "SwiftUI+CoreData")
+    
+    @EnvironmentObject var mockTrips: TripsData
     
     var body: some View {
         ZStack {
             NavigationView{
                 ZStack{
-                    List (mockTrips, id: \.self) { item in
+                    List (mockTrips.mockTrips, id: \.self) { item in
                         ZStack {
                             NavigationLink(destination: ActivitiesView(title: item)) {}.buttonStyle(.plain)
                                 .opacity(0.0)
@@ -49,7 +49,9 @@ struct TripsView: View {
                                 
                             }).overCurrentContext(isPresented: $showingAddTripView, showWithAnimate: true, dismissWithAnimate: true, modalPresentationStyle: .crossDissolve, content: {
                                 return AnyView (
-                                    AddTripView(coreDataStack: coreDataStack, mockTrips: mockTrips, onEnd: {
+                                    AddTripView(coreDataStack: coreDataStack, mockTrips: mockTrips.mockTrips, onEnd: {
+                                        itemTrips in
+                                        mockTrips.mockTrips = itemTrips
                                         showingAddTripView.toggle()
                                     }))
                             })
@@ -64,8 +66,8 @@ struct TripsView: View {
 }
 
     
-    struct TripsView_Previews: PreviewProvider {
-        static var previews: some View {
-            TripsView()
-    }
-}
+//    struct TripsView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            TripsView()
+//    }
+//}

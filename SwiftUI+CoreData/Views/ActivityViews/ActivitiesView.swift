@@ -54,7 +54,6 @@ struct ActivitiesView: View {
                     return AnyView (
                         AddActivityView(onEnd: {
                             showingAddActivityView.toggle()
-                            print(showingAddActivityView)
                         })
                     )
                 })

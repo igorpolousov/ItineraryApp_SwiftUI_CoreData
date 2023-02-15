@@ -19,18 +19,18 @@ extension View {
         modalPresentationStyle: UIModalTransitionStyle = .crossDissolve,
         content: () -> AnyView
     ) -> some View {
+        
         if isPresented.wrappedValue && currentOverCurrentContextUIHost == nil {
             let uiHost = UIHostingController(rootView: content())
             currentOverCurrentContextUIHost = uiHost
-            
+
             uiHost.modalPresentationStyle = .overCurrentContext
                         uiHost.modalTransitionStyle = modalPresentationStyle
             uiHost.view.backgroundColor = UIColor.clear
-            
-            
+
             let rootVC = UIApplication.shared.windows.first?.rootViewController
             rootVC?.present(uiHost, animated: showWithAnimate, completion: nil)
-            
+
         } else {
             if let uiHost = currentOverCurrentContextUIHost {
                 uiHost.dismiss(animated: dismissWithAnimate, completion: {})
@@ -38,5 +38,6 @@ extension View {
             }
         }
         return self
+      
     }
 }
