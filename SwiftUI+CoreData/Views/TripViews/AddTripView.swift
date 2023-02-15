@@ -21,6 +21,8 @@ struct AddTripView: View {
     @State var coreDataStack: CoreDataStack
     @State var mockTrips: [String]
     
+    var onEnd: ()->()
+    
     var body: some View {
         ZStack {
             Color.black
@@ -73,6 +75,7 @@ struct AddTripView: View {
                     HStack {
                         Button("Cancel") {
                             presentationMode.wrappedValue.dismiss()
+                            onEnd()
                         }
                         .modifier(PopUpButton( cornerRadius: 10))
                         
@@ -82,6 +85,7 @@ struct AddTripView: View {
                             TripFunctions.createTrip(tripModelTitle: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack)
                             mockTrips.append(tripName)
                             presentationMode.wrappedValue.dismiss()
+                            onEnd()
                             print(mockTrips)
                         }
                         .modifier(PopUpButton(cornerRadius: 10))
@@ -112,6 +116,6 @@ struct AddTripView: View {
 
 struct AddTripPreview: PreviewProvider {
     static var previews: some View {
-        AddTripView(coreDataStack: CoreDataStack(modelName: "SwiftUI+CoreData"), mockTrips: [])
+        AddTripView(coreDataStack: CoreDataStack(modelName: "SwiftUI+CoreData"), mockTrips: [], onEnd: {})
     }
 }

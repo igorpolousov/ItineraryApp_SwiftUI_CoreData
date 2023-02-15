@@ -22,7 +22,7 @@ struct ActivitiesView: View {
                 .edgesIgnoringSafeArea(.all)
                 .overlay(
                     Button(action: {
-                        showingAddActivityView.toggle()
+                        showingActionSheet.toggle()
                     }, label: {
                         Text("+")
                             .modifier(PlusButtonModifier())

@@ -49,7 +49,9 @@ struct TripsView: View {
                                 
                             }).overCurrentContext(isPresented: $showingAddTripView, showWithAnimate: true, dismissWithAnimate: true, modalPresentationStyle: .crossDissolve, content: {
                                 return AnyView (
-                                    AddTripView(coreDataStack: coreDataStack, mockTrips: mockTrips))
+                                    AddTripView(coreDataStack: coreDataStack, mockTrips: mockTrips, onEnd: {
+                                        showingAddTripView.toggle()
+                                    }))
                             })
                             .frame(width: 60, height: 60)
                             .padding(.trailing, 10)
