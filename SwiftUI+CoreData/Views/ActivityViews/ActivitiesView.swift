@@ -38,19 +38,27 @@ struct ActivitiesView: View {
                                         }
                                     ])
                     })
-//            .overCurrentContext(isPresented: $showingAddActivityView, content: {
-//                return AnyView (
-//                    AddActivityView()
-//                )
-//            })
-            .overCurrentContext(isPresented: $showingAddDayView, content: {
-                return AnyView (
-                    AddDayView(onEnd: {
-                        showingAddDayView.toggle()
+                    .overCurrentContext(isPresented: $showingAddDayView, content: {
+                        return AnyView (
+                            AddDayView(onEnd: {
+                                showingAddDayView.toggle()
+                            })
+                        )
                     })
-                )
-            })
-                .padding(), alignment: .bottomTrailing)
+                    .padding(), alignment: .bottomTrailing)
+            
+            if showingAddActivityView {
+                ZStack {
+                }
+                .overCurrentContext(isPresented: $showingAddActivityView, content: {
+                    return AnyView (
+                        AddActivityView(onEnd: {
+                            showingAddActivityView.toggle()
+                            print(showingAddActivityView)
+                        })
+                    )
+                })
+            }
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)

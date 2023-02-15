@@ -12,6 +12,7 @@ struct AddActivityView: View {
     @State private var taskDescription: String = ""
     @State private var additionalDescription: String = ""
     @Environment(\.presentationMode) var presentationMode
+    var onEnd: ()->()
     
     @State private var selectedDate: String = Date().dateFormatter()
     @State private var pickerMockData = [Date().dateFormatter(), Date().add(days: 1).dateFormatter(), Date().add(days: 2).dateFormatter(), Date().add(days: 3).dateFormatter()]
@@ -71,6 +72,7 @@ struct AddActivityView: View {
                 HStack {
                     Button("Cancel") {
                         presentationMode.wrappedValue.dismiss()
+                        onEnd()
                     }
                     .modifier(PopUpButton( cornerRadius: 10))
                     
@@ -79,6 +81,7 @@ struct AddActivityView: View {
                     Button("Save") {
                         // Update trip Activity
                         presentationMode.wrappedValue.dismiss()
+                        onEnd()
                     }
                     .modifier(PopUpButton(cornerRadius: 10))
                 }
@@ -94,7 +97,7 @@ struct AddActivityView: View {
 
 struct AddActivityView_Preview: PreviewProvider {
     static var previews: some View {
-        AddActivityView()
+        AddActivityView(onEnd: {})
     }
 }
 
