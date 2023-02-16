@@ -11,13 +11,14 @@ struct TripsView: View {
     
     @State private var showingAddTripView = false
     @EnvironmentObject var coreDataStack: CoreDataStack
+    @EnvironmentObject var tripsData: TripsData
     
     var body: some View {
         ZStack {
             NavigationView {
                 ZStack{
                     List {
-                        ForEach(TripsData.trips) { trip in
+                        ForEach(tripsData.tripsData) { trip in
                             ZStack {
                                 NavigationLink(destination: ActivitiesView(title: trip.title)) {}
                                     .buttonStyle(.plain)
@@ -32,7 +33,9 @@ struct TripsView: View {
                         }
                     }
                     .onAppear{
-                        TripFunctions.readTrips(coreDataStack: coreDataStack)
+                        TripFunctions.readTrips(coreDataStack: coreDataStack, completion: {
+                            tripsData.tripsData = TripsData.trips
+                        })
                     }
                     .listStyle(.grouped)
                     .scrollContentBackground(.hidden)
@@ -53,7 +56,8 @@ struct TripsView: View {
                                 
                             }).overCurrentContext(isPresented: $showingAddTripView, showWithAnimate: true, dismissWithAnimate: true, modalPresentationStyle: .crossDissolve, content: {
                                 return AnyView (
-                                    AddTripView(coreDataStack: coreDataStack, onEnd: {
+                                    AddTripView(coreDataStack: coreDataStack, tripsData: tripsData.tripsData, onEnd: { updateTripsData in
+                                        tripsData.tripsData = updateTripsData
                                         showingAddTripView.toggle()
                                     }))
                             })

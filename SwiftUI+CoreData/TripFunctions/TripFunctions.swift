@@ -11,23 +11,25 @@ import CoreData
 class TripFunctions {
     
     // create trip
-    static func createTrip(tripModelTitle: String, tripModelImage: UIImage? = nil, coreDataStack: CoreDataStack) {
+    static func createTrip(tripModelTitle: String, tripModelImage: UIImage? = nil, coreDataStack: CoreDataStack, completion: @escaping ()->()) {
         let tripModel = TripModel(context: coreDataStack.managedContext)
         tripModel.title = tripModelTitle
         tripModel.image = tripModelImage?.pngData()
         tripModel.id = UUID()
         TripsData.trips.append(tripModel)
+        completion()
         coreDataStack.saveContext()
     }
     
     // read trip form core data
-    static func readTrips(coreDataStack: CoreDataStack) {
+    static func readTrips(coreDataStack: CoreDataStack, completion: @escaping ()->()) {
         let fetchRequest: NSFetchRequest<TripModel> = TripModel.fetchRequest()
         var asyncFetchRequest: NSAsynchronousFetchRequest<TripModel>?
         asyncFetchRequest = NSAsynchronousFetchRequest<TripModel>(fetchRequest: fetchRequest) {
             (result: NSAsynchronousFetchResult) in
             guard let tripData = result.finalResult else {return}
             TripsData.trips = tripData
+            completion()
         }
         
         do {
