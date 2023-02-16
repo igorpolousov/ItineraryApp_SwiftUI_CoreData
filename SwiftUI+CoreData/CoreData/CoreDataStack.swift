@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class CoreDataStack {
+class CoreDataStack: ObservableObject {
     private let modelName: String
     
     init(modelName: String) {

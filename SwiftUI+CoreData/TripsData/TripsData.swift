@@ -10,7 +10,6 @@ import UIKit
 class TripsData: ObservableObject {
     
     static var trips: [TripModel] = []
-    @Published var mockTrips: [String] = ["Trip 1", "Trip 2", "Trip 3"," Trip 4", " Trip 5"]
-
+    @Published var tripsData: [TripModel] = []
 }
 

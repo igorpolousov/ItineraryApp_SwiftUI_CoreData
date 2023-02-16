@@ -10,32 +10,36 @@ import SwiftUI
 struct TripsView: View {
     
     @State private var showingAddTripView = false
-    private var coreDataStack = CoreDataStack(modelName: "SwiftUI+CoreData")
-    
-    @EnvironmentObject var mockTrips: TripsData
+    @EnvironmentObject var coreDataStack: CoreDataStack
     
     var body: some View {
         ZStack {
-            NavigationView{
+            NavigationView {
                 ZStack{
-                    List (mockTrips.mockTrips, id: \.self) { item in
-                        ZStack {
-                            NavigationLink(destination: ActivitiesView(title: item)) {}.buttonStyle(.plain)
-                                .opacity(0.0)
-                                .frame(height: 0)
-                            
-                            HStack{
-                                CustomRow(content: item)
+                    List {
+                        ForEach(TripsData.trips) { trip in
+                            ZStack {
+                                NavigationLink(destination: ActivitiesView(title: trip.title)) {}
+                                    .buttonStyle(.plain)
+                                    .opacity(0.0)
+                                    .frame(height: 0)
+                                HStack {
+                                    CustomRow(content: trip.title)
+                                }
                             }
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
                         }
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
+                    }
+                    .onAppear{
+                        TripFunctions.readTrips(coreDataStack: coreDataStack)
                     }
                     .listStyle(.grouped)
                     .scrollContentBackground(.hidden)
                     .background(Color(Theme.backgroundColor!))
                     .navigationTitle("Trips")
                     .toolbarBackground(Color(uiColor: Theme.swipeEditColor!), for: .navigationBar)
+                  
                     
                     VStack{
                         Spacer()
@@ -49,9 +53,7 @@ struct TripsView: View {
                                 
                             }).overCurrentContext(isPresented: $showingAddTripView, showWithAnimate: true, dismissWithAnimate: true, modalPresentationStyle: .crossDissolve, content: {
                                 return AnyView (
-                                    AddTripView(coreDataStack: coreDataStack, mockTrips: mockTrips.mockTrips, onEnd: {
-                                        itemTrips in
-                                        mockTrips.mockTrips = itemTrips
+                                    AddTripView(coreDataStack: coreDataStack, onEnd: {
                                         showingAddTripView.toggle()
                                     }))
                             })

@@ -10,12 +10,14 @@
 /*
  MARK: TO_DO
  
-how to remove alert in "ViewTransitionExtension"?
+ - how to remove alert in "ViewTransitionExtension"?
+ - сдeлать возможность изменять размер картинки в Image Picker? " Is it possible in SwiftUI?
  
  */
 
 /*
  MARK: Remarks
  - @Enviroment работает только для child view
- - Image.clipped - обрезает только видмую часть картинки при этом сохраняет оригинальный размер картинки, что при использовании в верхнем слое ZStack, может сделать недоступным нижние view, потому что картинка будет накрывать их  
+ - Image.clipped - обрезает только видмую часть картинки при этом сохраняет оригинальный размер картинки, что при использовании в верхнем слое ZStack, может сделать недоступным нижние view, потому что картинка будет накрывать их
+ - List view works only with @Published objects to automatically update data
  */

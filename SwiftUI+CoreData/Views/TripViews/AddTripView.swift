@@ -19,9 +19,8 @@ struct AddTripView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State var coreDataStack: CoreDataStack
-    @State var mockTrips: [String]
     
-    var onEnd: ([String])->()
+    var onEnd: ()->()
     
     var body: some View {
         ZStack {
@@ -75,7 +74,7 @@ struct AddTripView: View {
                     HStack {
                         Button("Cancel") {
                             presentationMode.wrappedValue.dismiss()
-                            onEnd(mockTrips)
+                            onEnd()
                         }
                         .modifier(PopUpButton( cornerRadius: 10))
                         
@@ -83,10 +82,8 @@ struct AddTripView: View {
                         
                         Button("Save") {
                             TripFunctions.createTrip(tripModelTitle: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack)
-                            mockTrips.append(tripName)
                             presentationMode.wrappedValue.dismiss()
-                            onEnd(mockTrips)
-                            print(mockTrips)
+                            onEnd()
                         }
                         .modifier(PopUpButton(cornerRadius: 10))
                     }
