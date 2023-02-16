@@ -19,6 +19,7 @@ struct TripsView: View {
                 ZStack{
                     List {
                         ForEach(tripsData.tripsData) { trip in
+                            
                             ZStack {
                                 NavigationLink(destination: ActivitiesView(title: trip.title)) {}
                                     .buttonStyle(.plain)
@@ -26,15 +27,33 @@ struct TripsView: View {
                                     .frame(height: 0)
                                 HStack {
                                     CustomRow(content: trip.title)
+                                        .swipeActions(edge: .trailing) {
+                                            Button(role: .destructive) {
+                                                let index = tripsData.tripsData.firstIndex(of: trip)
+                                                TripFunctions.deleteTrip(index: index!, coreDataStack: coreDataStack, completion: {tripsData.tripsData = TripsData.trips})
+                                            } label: {
+                                                HStack {
+                                                    Image("delete").foregroundColor(.white)
+                                                    Text("Delete")
+                                                }
+                                                    
+                                            }.tint(Color(Theme.tintColor!))
+                                        }
+                                        .swipeActions(edge: .leading) {
+                                            Button {
+                                                // Show "AddTripView" with "Edit trip" label
+                                                // update trip in data store
+                                            } label: {
+                                                HStack {
+                                                    Image("pencil").foregroundColor(.white)
+                                                    Text("Edit")
+                                                }
+                                            } .tint(Color(Theme.swipeEditColor!))
+                                        }
                                 }
                             }
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
-                        }
-                        .onDelete { indexSet in
-                            TripFunctions.deleteTrip(indexSet: indexSet, coreDataStack: coreDataStack, completion: {
-                                tripsData.tripsData = TripsData.trips
-                            })
                         }
                     }
                     .onAppear{

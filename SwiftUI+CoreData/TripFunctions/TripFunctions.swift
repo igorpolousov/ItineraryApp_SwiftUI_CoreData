@@ -51,12 +51,11 @@ class TripFunctions {
     }
     
     // delete trip
-    static func deleteTrip(indexSet: IndexSet, coreDataStack: CoreDataStack, completion: @escaping ()->()) {
-        let index = indexSet.first
-        let tripToRemove = TripsData.trips[index!]
+    static func deleteTrip(index: Int, coreDataStack: CoreDataStack, completion: @escaping ()->()) {
+        let tripToRemove = TripsData.trips[index]
         coreDataStack.managedContext.delete(tripToRemove)
         coreDataStack.saveContext()
-        TripsData.trips.remove(atOffsets: indexSet)
+        TripsData.trips.remove(at: index)
         completion()
     }
     
