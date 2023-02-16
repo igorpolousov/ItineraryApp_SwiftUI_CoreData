@@ -31,6 +31,11 @@ struct TripsView: View {
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
                         }
+                        .onDelete { indexSet in
+                            TripFunctions.deleteTrip(indexSet: indexSet, coreDataStack: coreDataStack, completion: {
+                                tripsData.tripsData = TripsData.trips
+                            })
+                        }
                     }
                     .onAppear{
                         TripFunctions.readTrips(coreDataStack: coreDataStack, completion: {
