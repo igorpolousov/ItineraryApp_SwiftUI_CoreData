@@ -59,13 +59,21 @@ struct ActivitiesView: View {
                 })
             }
         }
-        .navigationTitle(title)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(title)
+                    .foregroundColor(Color(Theme.tintColor!))
+                    .font(Font(Theme.mainFont!))
+                    .shadow(color: .white, radius: 5, x: 3, y:  3)
+            }
+        }
         .navigationBarTitleDisplayMode(.inline)
+        
     }
 }
 
-struct Activities_Previews: PreviewProvider {
-    static var previews: some View {
-        ActivitiesView(title: "hello")
-    }
-}
+//struct Activities_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ActivitiesView(title: "hello")
+//    }
+//}

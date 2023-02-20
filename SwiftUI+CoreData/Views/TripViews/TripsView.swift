@@ -71,13 +71,11 @@ struct TripsView: View {
                     .toolbar {
                         ToolbarItem(placement: .principal) {
                             Text("Trips")
-                                .frame(height: 20)
                                 .font(Font(Theme.mainFont!))
                                 .foregroundColor(Color(Theme.tintColor!))
                                 .shadow(color: .white, radius: 5, x: 3, y:  3)
                         }
                     }
-                    
                     
                     VStack{
                         Spacer()
