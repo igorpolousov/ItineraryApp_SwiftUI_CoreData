@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CustomRow: View {
     
-    var content: String
+    var title: String
+    var imageData: Data?
     
     var body: some View {
         ZStack {
@@ -17,7 +18,18 @@ struct CustomRow: View {
                 .fill(Color(Theme.accentColor!))
                 .frame(height: 160)
             
-            Text(content)
+            if let imageData {
+                if let imageToLoad = UIImage(data: imageData) {
+                    Image(uiImage: imageToLoad)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 160)
+                        .cornerRadius(10)
+                        .clipped()
+                }
+            }
+            
+            Text(title)
                 .font(Font(Theme.mainFont!))
                 .foregroundColor(.white)
                 .shadow(color: .black, radius: 10, x: 2, y: 2)
@@ -26,8 +38,8 @@ struct CustomRow: View {
     }
 }
 
-struct CustomRow_Preview: PreviewProvider {
-    static var previews: some View {
-        CustomRow(content: "Some text")
-    }
-}
+//struct CustomRow_Preview: PreviewProvider {
+//    static var previews: some View {
+//        CustomRow(title: "Some text")
+//    }
+//}

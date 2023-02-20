@@ -22,12 +22,12 @@ struct TripsView: View {
                     List {
                         ForEach(tripsData.tripsData) { trip in
                             ZStack {
-                                NavigationLink(destination: ActivitiesView(title: trip.title)) {}
+                                NavigationLink(destination: ActivitiesView(title: trip.title, imageData: trip.image)) {}
                                     .buttonStyle(.plain)
                                     .opacity(0.0)
                                     .frame(height: 0)
                                 HStack {
-                                    CustomRow(content: trip.title)
+                                    CustomRow(title: trip.title, imageData: trip.image)
                                         .swipeActions(edge: .trailing) {
                                             Button(role: .destructive) {
                                                 let index = tripsData.tripsData.firstIndex(of: trip)

@@ -16,12 +16,30 @@ struct ActivitiesView: View {
     
     //var trip: TripModel?
     var title: String
+    var imageData: Data?
+    var image: Image?
     
     var body: some View {
         ZStack {
-            Color(Theme.backgroundColor!)
-                .edgesIgnoringSafeArea(.all)
-                .overlay(
+            if let imageData {
+                if let imageToLoad = UIImage(data: imageData) {
+                    GeometryReader { proxy in
+                        Image(uiImage: imageToLoad)
+                            .resizable()
+                            //.aspectRatio(contentMode: .fill)
+                            .aspectRatio(CGSize(width: proxy.size.width , height: proxy.size.height), contentMode: .fill)
+                            .edgesIgnoringSafeArea(.all)
+                    }
+                }
+            } else {
+                Color(Theme.backgroundColor!)
+                    .edgesIgnoringSafeArea(.all)
+            }
+            
+            VStack {
+               Spacer()
+                HStack {
+                    Spacer()
                     Button(action: {
                         showingActionSheet.toggle()
                     }, label: {
@@ -46,7 +64,11 @@ struct ActivitiesView: View {
                             })
                         )
                     })
-                    .padding(), alignment: .bottomTrailing)
+                    .frame(width: 60, height: 60)
+                    .padding(.trailing, 20)
+                }
+            }
+              
             
             if showingAddActivityView {
                 ZStack {
@@ -73,10 +95,15 @@ struct ActivitiesView: View {
                 Button {
                     presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Text("<")
+                    Image("backArrow")
+                        .resizable()
+                        .frame(width: 20, height: 20)
                         .foregroundColor(Color(Theme.tintColor!))
-                        .font(Font(Theme.backButtonFont!))
-                        .shadow(color: .white, radius: 10,x: 3, y: 3).opacity(1.0)
+                        
+//                    Text("<")
+//                        .foregroundColor(Color(Theme.tintColor!))
+//                        .font(Font(Theme.backButtonFont!))
+//                        .shadow(color: .white, radius: 10,x: 3, y: 3).opacity(1.0)
                 }
             }
         }
