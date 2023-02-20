@@ -15,10 +15,12 @@ class Theme {
     static let activityFont = UIFont(name: "Oswald-Regular",size: 16)
     static let dayFont = UIFont(name: "Bitter-Bold", size: 20)
     static let plusButtomFont = UIFont(name: "Bitter-regular", size: 50)
+    static let backButtonFont = UIFont(name: "Bitter-regular", size: 40)
     
     // colors
     static let accentColor = UIColor(named: "Accent")
     static let tintColor = UIColor(named: "Tint")
     static let backgroundColor = UIColor(named: "Background")
     static let swipeEditColor = UIColor(named: "SwipeEdit")
+    
 }

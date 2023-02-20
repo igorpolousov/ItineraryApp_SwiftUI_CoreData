@@ -12,6 +12,7 @@ struct ActivitiesView: View {
     @State private var showingAddDayView = false
     @State private var showingAddActivityView = false
     @State private var showingActionSheet = false
+    @Environment(\.presentationMode) var presentationMode
     
     //var trip: TripModel?
     var title: String
@@ -59,15 +60,28 @@ struct ActivitiesView: View {
                 })
             }
         }
+        .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(title)
                     .foregroundColor(Color(Theme.tintColor!))
                     .font(Font(Theme.mainFont!))
                     .shadow(color: .white, radius: 5, x: 3, y:  3)
+            };
+            
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Text("<")
+                        .foregroundColor(Color(Theme.tintColor!))
+                        .font(Font(Theme.backButtonFont!))
+                        .shadow(color: .white, radius: 10,x: 3, y: 3).opacity(1.0)
+                }
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        
         
     }
 }
