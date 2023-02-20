@@ -26,7 +26,6 @@ struct ActivitiesView: View {
                     GeometryReader { proxy in
                         Image(uiImage: imageToLoad)
                             .resizable()
-                            //.aspectRatio(contentMode: .fill)
                             .aspectRatio(CGSize(width: proxy.size.width , height: proxy.size.height), contentMode: .fill)
                             .edgesIgnoringSafeArea(.all)
                     }
