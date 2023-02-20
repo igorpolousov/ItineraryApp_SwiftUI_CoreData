@@ -14,6 +14,7 @@
  - сдeлать возможность изменять размер картинки в Image Picker? " Is it possible in SwiftUI?
  - how to refactor static funcs in "TripFunctions" to make its accesseble from @Enviroment
  - how to customize delete and edit functions in List(https://stackoverflow.com/questions/57112426/swiftui-custom-swipe-actions-in-list)
+ - jтредактировать шрифт navigation view
  
  
  */

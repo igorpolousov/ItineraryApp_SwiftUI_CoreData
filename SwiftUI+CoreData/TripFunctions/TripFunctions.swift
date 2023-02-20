@@ -46,7 +46,11 @@ class TripFunctions {
     }
     
     // update trip data
-    static func updateTrip() {
+    static func updateTrip(at index: Int, title: String, image: UIImage? = nil, coreDataStack: CoreDataStack, completion: @escaping ()->()) {
+        TripsData.trips[index].title = title
+        TripsData.trips[index].image = image?.pngData()
+        coreDataStack.saveContext()
+        completion()
         
     }
     

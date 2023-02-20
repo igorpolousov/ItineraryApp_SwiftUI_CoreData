@@ -13,13 +13,14 @@ struct TripsView: View {
     @EnvironmentObject var coreDataStack: CoreDataStack
     @EnvironmentObject var tripsData: TripsData
     
+    @State var tripIndexToEdit: Int?
+    
     var body: some View {
         ZStack {
             NavigationView {
                 ZStack{
                     List {
                         ForEach(tripsData.tripsData) { trip in
-                            
                             ZStack {
                                 NavigationLink(destination: ActivitiesView(title: trip.title)) {}
                                     .buttonStyle(.plain)
@@ -36,13 +37,15 @@ struct TripsView: View {
                                                     Image("delete").foregroundColor(.white)
                                                     Text("Delete")
                                                 }
-                                                    
+                                                
                                             }.tint(Color(Theme.tintColor!))
                                         }
                                         .swipeActions(edge: .leading) {
                                             Button {
                                                 // Show "AddTripView" with "Edit trip" label
+                                                showingAddTripView.toggle()
                                                 // update trip in data store
+                                                tripIndexToEdit = tripsData.tripsData.firstIndex(of: trip)
                                             } label: {
                                                 HStack {
                                                     Image("pencil").foregroundColor(.white)
@@ -64,9 +67,17 @@ struct TripsView: View {
                     .listStyle(.grouped)
                     .scrollContentBackground(.hidden)
                     .background(Color(Theme.backgroundColor!))
-                    .navigationTitle("Trips")
-                    .toolbarBackground(Color(uiColor: Theme.swipeEditColor!), for: .navigationBar)
-                  
+                    .toolbarBackground(Color(uiColor: Theme.backgroundColor!), for: .navigationBar)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            Text("Trips")
+                                .frame(height: 20)
+                                .font(Font(Theme.mainFont!))
+                                .foregroundColor(Color(Theme.tintColor!))
+                                .shadow(color: .white, radius: 5, x: 3, y:  3)
+                        }
+                    }
+                    
                     
                     VStack{
                         Spacer()
@@ -80,9 +91,10 @@ struct TripsView: View {
                                 
                             }).overCurrentContext(isPresented: $showingAddTripView, showWithAnimate: true, dismissWithAnimate: true, modalPresentationStyle: .crossDissolve, content: {
                                 return AnyView (
-                                    AddTripView(coreDataStack: coreDataStack, tripsData: tripsData.tripsData, onEnd: { updateTripsData in
+                                    AddTripView(coreDataStack: coreDataStack, tripsData: tripsData.tripsData, tripIndexToEdit: tripIndexToEdit, onEnd: { updateTripsData in
                                         tripsData.tripsData = updateTripsData
                                         showingAddTripView.toggle()
+                                        tripIndexToEdit = nil
                                     }))
                             })
                             .frame(width: 60, height: 60)

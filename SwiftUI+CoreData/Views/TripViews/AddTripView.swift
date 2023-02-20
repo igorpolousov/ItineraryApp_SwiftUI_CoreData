@@ -21,6 +21,7 @@ struct AddTripView: View {
     @State var coreDataStack: CoreDataStack
     @State var tripsData: [TripModel]
     
+    var tripIndexToEdit: Int?
     var onEnd: ([TripModel])->()
     
     var body: some View {
@@ -82,9 +83,15 @@ struct AddTripView: View {
                         Spacer()
                         
                         Button("Save") {
-                            TripFunctions.createTrip(tripModelTitle: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack,completion: {
-                                tripsData = TripsData.trips
-                            })
+                            if let tripIndexToEdit {
+                                TripFunctions.updateTrip(at: tripIndexToEdit, title: tripName, coreDataStack: coreDataStack, completion: {
+                                    tripsData = TripsData.trips
+                                })
+                            } else {
+                                TripFunctions.createTrip(tripModelTitle: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack,completion: {
+                                    tripsData = TripsData.trips
+                                })
+                            }
                             presentationMode.wrappedValue.dismiss()
                             onEnd(tripsData)
                         }
@@ -102,6 +109,15 @@ struct AddTripView: View {
                 .sheet(isPresented: $showingImagePicker) {
                     ImagePicker(image: $inputImage)
                 }
+                
+            }
+        }
+        .onAppear{
+            if let index = tripIndexToEdit {
+                viewName = "  Edit trip"
+                let trip = tripsData[index]
+                tripName = trip.title
+                
                 
             }
         }
