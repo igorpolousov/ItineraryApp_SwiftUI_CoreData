@@ -43,6 +43,7 @@
 		C25D8C9F298D25490035B7ED /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C9E298D25490035B7ED /* CoreDataStack.swift */; };
 		C29B996C2993C82600441788 /* TODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29B996B2993C82600441788 /* TODO.swift */; };
 		C29B996E2993E7BB00441788 /* CustomRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29B996D2993E7BB00441788 /* CustomRow.swift */; };
+		C2E43D5D29A39DA800A2C4F1 /* ImagePickerWithCrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E43D5C29A39DA800A2C4F1 /* ImagePickerWithCrop.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		C25D8C9E298D25490035B7ED /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C29B996B2993C82600441788 /* TODO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
 		C29B996D2993E7BB00441788 /* CustomRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRow.swift; sourceTree = "<group>"; };
+		C2E43D5C29A39DA800A2C4F1 /* ImagePickerWithCrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerWithCrop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				C22EB7F9299135EE00D94463 /* ImagePicker.swift */,
+				C2E43D5C29A39DA800A2C4F1 /* ImagePickerWithCrop.swift */,
 				C29B996D2993E7BB00441788 /* CustomRow.swift */,
 			);
 			path = CustomViews;
@@ -359,6 +362,7 @@
 				C29B996E2993E7BB00441788 /* CustomRow.swift in Sources */,
 				C25D8C7F298D16870035B7ED /* Theme.swift in Sources */,
 				C22EB7FC29926CB500D94463 /* AddTripView.swift in Sources */,
+				C2E43D5D29A39DA800A2C4F1 /* ImagePickerWithCrop.swift in Sources */,
 				C22EB8032992847900D94463 /* AddViewsModifier.swift in Sources */,
 				C25D8C92298D1F0C0035B7ED /* ActivityModel+CoreDataProperties.swift in Sources */,
 				C22EB7FA299135EE00D94463 /* ImagePicker.swift in Sources */,
