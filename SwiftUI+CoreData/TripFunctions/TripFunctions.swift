@@ -46,9 +46,9 @@ class TripFunctions {
     }
     
     // update trip data
-    static func updateTrip(at index: Int, title: String, image: UIImage? = nil, coreDataStack: CoreDataStack, completion: @escaping ()->()) {
+    static func updateTrip(at index: Int, title: String, tripModelImage: UIImage? = nil, coreDataStack: CoreDataStack, completion: @escaping ()->()) {
         TripsData.trips[index].title = title
-        TripsData.trips[index].image = image?.pngData()
+        TripsData.trips[index].image = tripModelImage?.pngData()
         coreDataStack.saveContext()
         completion()
         

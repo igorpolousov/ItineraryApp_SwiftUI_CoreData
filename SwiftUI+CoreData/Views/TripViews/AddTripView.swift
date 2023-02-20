@@ -84,7 +84,7 @@ struct AddTripView: View {
                         
                         Button("Save") {
                             if let tripIndexToEdit {
-                                TripFunctions.updateTrip(at: tripIndexToEdit, title: tripName, coreDataStack: coreDataStack, completion: {
+                                TripFunctions.updateTrip(at: tripIndexToEdit, title: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack, completion: {
                                     tripsData = TripsData.trips
                                 })
                             } else {
