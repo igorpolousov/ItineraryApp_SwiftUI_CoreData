@@ -11,7 +11,7 @@ import CoreData
 struct AddTripView: View {
     
     @State private var viewName = "Add Trip"
-    @State private var tripName = " "
+    @State private var tripName = ""
     @State private var image: Image?
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
@@ -84,7 +84,7 @@ struct AddTripView: View {
                         Spacer()
                         
                         Button("Save") {
-                            if tripName == " " {
+                            if tripName == "" {
                                 showingAlert.toggle()
                             } else {
                                 if let tripIndexToEdit {

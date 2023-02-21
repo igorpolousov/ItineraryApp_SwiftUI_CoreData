@@ -10,6 +10,7 @@ import SwiftUI
 // Here you can add Day to Trip
 
 struct AddDayView: View {
+    
     @State private var date = Date()
     @State private var dayDescription = ""
     @Environment(\.presentationMode) var presentationMode

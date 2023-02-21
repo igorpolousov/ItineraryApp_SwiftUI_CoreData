@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AddActivityView: View {
     
-    @State private var taskDescription: String = ""
+    @State private var showingAlert =  false
+    @State private var activityDescription: String = ""
     @State private var additionalDescription: String = ""
     @Environment(\.presentationMode) var presentationMode
     var onEnd: ()->()
@@ -63,7 +64,7 @@ struct AddActivityView: View {
                 }
                 
                 
-                TextField("  Add Activity Description", text: $taskDescription)
+                TextField("  Add Activity Description", text: $activityDescription)
                     .modifier(TextFieldModifier())
                 
                 TextField("  Add additional description (Optional)", text: $additionalDescription)
@@ -80,10 +81,18 @@ struct AddActivityView: View {
                     
                     Button("Save") {
                         // Update trip Activity
-                        presentationMode.wrappedValue.dismiss()
-                        onEnd()
+                        if activityDescription == "" {
+                            showingAlert.toggle()
+                        } else {
+                            presentationMode.wrappedValue.dismiss()
+                            onEnd()
+                        }
                     }
                     .modifier(PopUpButton(cornerRadius: 10))
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Better to have activity name"), message: Text("Enter Activity name"), dismissButton: .cancel(Text("Got it")) )
+                        
+                    }
                 }
                 .frame(width: 360)
             }
