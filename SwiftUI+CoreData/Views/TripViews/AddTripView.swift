@@ -11,10 +11,11 @@ import CoreData
 struct AddTripView: View {
     
     @State private var viewName = "Add Trip"
-    @State private var tripName = ""
+    @State private var tripName = " "
     @State private var image: Image?
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
+    @State private var showingAlert = false
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -83,19 +84,27 @@ struct AddTripView: View {
                         Spacer()
                         
                         Button("Save") {
-                            if let tripIndexToEdit {
-                                TripFunctions.updateTrip(at: tripIndexToEdit, title: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack, completion: {
-                                    tripsData = TripsData.trips
-                                })
+                            if tripName == " " {
+                                showingAlert.toggle()
                             } else {
-                                TripFunctions.createTrip(tripModelTitle: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack,completion: {
-                                    tripsData = TripsData.trips
-                                })
+                                if let tripIndexToEdit {
+                                    TripFunctions.updateTrip(at: tripIndexToEdit, title: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack, completion: {
+                                        tripsData = TripsData.trips
+                                    })
+                                } else {
+                                    TripFunctions.createTrip(tripModelTitle: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack,completion: {
+                                        tripsData = TripsData.trips
+                                    })
+                                }
+                                presentationMode.wrappedValue.dismiss()
+                                onEnd(tripsData)
                             }
-                            presentationMode.wrappedValue.dismiss()
-                            onEnd(tripsData)
                         }
                         .modifier(PopUpButton(cornerRadius: 10))
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Better to have trip name"), message: Text("Enter trip name"), dismissButton: .cancel(Text("Got it")) )
+                            
+                        }
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.leading, 20)
