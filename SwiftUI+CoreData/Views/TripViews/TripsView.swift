@@ -19,15 +19,20 @@ struct TripsView: View {
         ZStack {
             NavigationView {
                 ZStack{
+                    // List of trips
                     List {
                         ForEach(tripsData.tripsData) { trip in
                             ZStack {
+                                // Present "ActivitiesView"
                                 NavigationLink(destination: ActivitiesView(title: trip.title, imageData: trip.image)) {}
                                     .buttonStyle(.plain)
                                     .opacity(0.0)
                                     .frame(height: 0)
                                 HStack {
+                                    // Custom row for trip in List
                                     CustomRow(title: trip.title, imageData: trip.image)
+                                    // Swiping actions
+                                        // Delete trip action
                                         .swipeActions(edge: .trailing) {
                                             Button(role: .destructive) {
                                                 let index = tripsData.tripsData.firstIndex(of: trip)
@@ -40,6 +45,7 @@ struct TripsView: View {
                                                 
                                             }.tint(Color(Theme.tintColor!))
                                         }
+                                        // Edit trip action
                                         .swipeActions(edge: .leading) {
                                             Button {
                                                 // Show "AddTripView" with "Edit trip" label
@@ -59,6 +65,7 @@ struct TripsView: View {
                             .listRowSeparator(.hidden)
                         }
                     }
+                    // Getting data from Core Data
                     .onAppear{
                         TripFunctions.readTrips(coreDataStack: coreDataStack, completion: {
                             tripsData.tripsData = TripsData.trips
@@ -67,6 +74,8 @@ struct TripsView: View {
                     .listStyle(.grouped)
                     .scrollContentBackground(.hidden)
                     .background(Color(Theme.backgroundColor!))
+                    
+                    // Navigation bar setup
                     .toolbarBackground(Color(uiColor: Theme.backgroundColor!), for: .navigationBar)
                     .toolbar {
                         ToolbarItem(placement: .principal) {
@@ -76,7 +85,7 @@ struct TripsView: View {
                                 .shadow(color: .white, radius: 5, x: 3, y:  3)
                         }
                     }
-                    
+                    // Floating action button(add trip)
                     VStack{
                         Spacer()
                         HStack {
@@ -86,7 +95,7 @@ struct TripsView: View {
                             }, label: {
                                 Text("+")
                                     .modifier(PlusButtonModifier())
-                                
+                                // Present "AddTripView"
                             }).overCurrentContext(isPresented: $showingAddTripView, showWithAnimate: true, dismissWithAnimate: true, modalPresentationStyle: .crossDissolve, content: {
                                 return AnyView (
                                     AddTripView(coreDataStack: coreDataStack, tripsData: tripsData.tripsData, tripIndexToEdit: tripIndexToEdit, onEnd: { updateTripsData in

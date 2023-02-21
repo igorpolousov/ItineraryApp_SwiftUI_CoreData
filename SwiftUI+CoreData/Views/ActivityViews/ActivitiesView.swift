@@ -13,14 +13,15 @@ struct ActivitiesView: View {
     @State private var showingAddActivityView = false
     @State private var showingActionSheet = false
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var tripsData: TripsData
     
-    //var trip: TripModel?
     var title: String
     var imageData: Data?
     var image: Image?
     
     var body: some View {
         ZStack {
+            // If exit trip image
             if let imageData {
                 if let imageToLoad = UIImage(data: imageData) {
                     GeometryReader { proxy in
@@ -31,10 +32,21 @@ struct ActivitiesView: View {
                     }
                 }
             } else {
+                // If trip hasn't image
                 Color(Theme.backgroundColor!)
                     .edgesIgnoringSafeArea(.all)
             }
             
+            // List of Days with Activities
+            List {
+                ForEach(tripsData.tripsData) { trip in
+                    Section {
+                        Text(trip.title)
+                    }
+                }
+            }
+            
+            // Floating action button
             VStack {
                Spacer()
                 HStack {
@@ -45,6 +57,7 @@ struct ActivitiesView: View {
                         Text("+")
                             .modifier(PlusButtonModifier())
                     })
+                    // Add Day or Activity action sheet
                     .actionSheet(isPresented: $showingActionSheet, content: {
                         ActionSheet(title: Text("What would you like to select?"),
                                     buttons: [
@@ -55,10 +68,9 @@ struct ActivitiesView: View {
                                             showingAddActivityView.toggle()
                                         },
                                         .cancel()
-                                        
-                                            
                                     ])
                     })
+                    // Showing AddDayView
                     .overCurrentContext(isPresented: $showingAddDayView, content: {
                         return AnyView (
                             AddDayView(onEnd: {
@@ -70,8 +82,8 @@ struct ActivitiesView: View {
                     .padding(.trailing, 20)
                 }
             }
-              
-            
+
+            // Showing AddActivityView
             if showingAddActivityView {
                 ZStack {
                 }
@@ -84,15 +96,17 @@ struct ActivitiesView: View {
                 })
             }
         }
+        // Navigation bar setup
         .navigationBarBackButtonHidden(true)
         .toolbar {
+            // Navigation bar title
             ToolbarItem(placement: .principal) {
                 Text(title)
                     .foregroundColor(Color(Theme.tintColor!))
                     .font(Font(Theme.mainFont!))
                     .shadow(color: .white, radius: 5, x: 3, y:  3)
             };
-            
+            // Navigation bar back button
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
                     presentationMode.wrappedValue.dismiss()
@@ -101,7 +115,7 @@ struct ActivitiesView: View {
                         .resizable()
                         .frame(width: 20, height: 20)
                         .foregroundColor(Color(Theme.tintColor!))
-                        
+                        // Alternative button with text implementation
 //                    Text("<")
 //                        .foregroundColor(Color(Theme.tintColor!))
 //                        .font(Font(Theme.backButtonFont!))
@@ -115,8 +129,3 @@ struct ActivitiesView: View {
     }
 }
 
-//struct Activities_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ActivitiesView(title: "hello")
-//    }
-//}
