@@ -51,15 +51,15 @@ struct AddActivityView: View {
                 
                 HStack(spacing: 20) {
                     Image("hotel")
-                        .foregroundColor(Color(Theme.tintColor!))
+                        .foregroundColor(Color(Theme.accentColor!))
                     Image("taxi")
-                        .foregroundColor(Color(Theme.tintColor!))
+                        .foregroundColor(Color(Theme.accentColor!))
                     Image("train")
-                        .foregroundColor(Color(Theme.tintColor!))
+                        .foregroundColor(Color(Theme.accentColor!))
                     Image("food")
-                        .foregroundColor(Color(Theme.tintColor!))
+                        .foregroundColor(Color(Theme.accentColor!))
                     Image("flight")
-                        .foregroundColor(Color(Theme.tintColor!))
+                        .foregroundColor(Color(Theme.accentColor!))
                 }
                 
                 

@@ -12,7 +12,6 @@
  
  - how to remove alert in "ViewTransitionExtension"?
  - add warning if trying to create a trip, or day, or action without name
- - add "cancel" button on "add day" menu
  - add days List view to Activities view. (Days -> Sections, Activities -> rows)
  
  

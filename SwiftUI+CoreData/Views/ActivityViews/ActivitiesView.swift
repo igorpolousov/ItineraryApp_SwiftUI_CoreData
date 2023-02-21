@@ -53,7 +53,10 @@ struct ActivitiesView: View {
                                         },
                                         .default(Text("Add Activity")) {
                                             showingAddActivityView.toggle()
-                                        }
+                                        },
+                                        .cancel()
+                                        
+                                            
                                     ])
                     })
                     .overCurrentContext(isPresented: $showingAddDayView, content: {
