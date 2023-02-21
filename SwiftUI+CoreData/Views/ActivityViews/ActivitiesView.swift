@@ -40,8 +40,15 @@ struct ActivitiesView: View {
             // List of Days with Activities
             List {
                 ForEach(tripsData.tripsData) { trip in
-                    Section {
-                        Text(trip.title)
+                    let dayModels = Array(arrayLiteral: trip.dayModels) as? [DayModel]
+                    ForEach(dayModels ?? []) { dayModel in
+                        Section(header:Text(dayModel.title ?? "Section title")) {
+                            let activityModels = Array(arrayLiteral: dayModel.activityModels) as? [ActivityModel]
+                            ForEach(activityModels ?? []) { activity in
+                                Text(activity.title ?? "Actitvity title here")
+                            }
+                            
+                        }
                     }
                 }
             }

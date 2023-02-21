@@ -2,7 +2,7 @@
 //  ActivityModel+CoreDataProperties.swift
 //  SwiftUI+CoreData
 //
-//  Created by Igor Polousov on 03.02.2023.
+//  Created by Igor Polousov on 21.02.2023.
 //
 //
 
@@ -20,6 +20,7 @@ extension ActivityModel {
     @NSManaged public var id: UUID?
     @NSManaged public var subtitle: String?
     @NSManaged public var title: String?
+    @NSManaged public var dayModel: DayModel?
 
 }
 
