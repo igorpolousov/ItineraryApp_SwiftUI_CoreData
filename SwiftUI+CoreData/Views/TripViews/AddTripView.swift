@@ -121,7 +121,6 @@ struct AddTripView: View {
                         showingImagePicker.toggle()
                     })
                 }
-                
             }
         }
         .onAppear{
@@ -129,6 +128,9 @@ struct AddTripView: View {
                 viewName = "  Edit trip"
                 let trip = tripsData[index]
                 tripName = trip.title
+                guard let data = trip.image else {return}
+                guard let imageToEdit = UIImage(data: data) else {return}
+                image = Image(uiImage: imageToEdit)
             }
         }
     }
