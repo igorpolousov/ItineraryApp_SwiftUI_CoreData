@@ -43,12 +43,15 @@ struct ImagePickerWithCrop: UIViewControllerRepresentable {
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let pickedImage  = info[.editedImage] as? UIImage {
-                self.pickedImage(pickedImage)
-            } else if let pickedImage = info[.originalImage]  as? UIImage {
-                self.pickedImage(pickedImage)
+            DispatchQueue.global(qos: .background).async {
+                if let pickedImage  = info[.editedImage] as? UIImage {
+                    self.pickedImage(pickedImage)
+                } else if let pickedImage = info[.originalImage]  as? UIImage {
+                    self.pickedImage(pickedImage)
 
+                }
             }
+            
         }
         
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
