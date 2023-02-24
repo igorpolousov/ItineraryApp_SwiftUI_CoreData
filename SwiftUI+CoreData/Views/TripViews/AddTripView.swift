@@ -85,11 +85,13 @@ struct AddTripView: View {
                                 showingAlert.toggle()
                             } else {
                                 if let tripIndexToEdit {
-                                    TripFunctions.updateTrip(at: tripIndexToEdit, title: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack)
+                                        TripFunctions.updateTrip(at: tripIndexToEdit, title: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack)
                                 } else {
-                                    TripFunctions.createTrip(tripModelTitle: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack, completion: {
-                                        tripsData.tripsData = TripsData.trips
-                                    })
+                                    withAnimation(.easeInOut(duration: 0.25))  {
+                                        TripFunctions.createTrip(tripModelTitle: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack, completion: {
+                                            tripsData.tripsData = TripsData.trips
+                                        })
+                                    }
                                 }
                                 showingAddTripView.toggle()
                                 tripIndexToEdit = nil

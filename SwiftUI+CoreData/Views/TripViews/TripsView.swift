@@ -30,15 +30,13 @@ struct TripsView: View {
                                     .frame(height: 0)
                                 HStack {
                                     // Custom row for trip in List
-                                    withAnimation(.easeInOut(duration: 0.25)) {
                                         CustomRow(title: trip.title, imageData: trip.image)
-                                    }
                                     // Swiping actions
                                         // Delete trip action
                                         .swipeActions(edge: .trailing) {
                                             Button(role: .destructive) {
                                                 let index = tripsData.tripsData.firstIndex(of: trip)
-                                                TripFunctions.deleteTrip(index: index!, coreDataStack: coreDataStack, completion: {tripsData.tripsData = TripsData.trips})
+                                                TripFunctions.deleteTrip(index: index!, coreDataStack: coreDataStack, completion: {tripsData.tripsData = TripsData.trips}) 
                                             } label: {
                                                 HStack {
                                                     Image("delete").foregroundColor(.white)

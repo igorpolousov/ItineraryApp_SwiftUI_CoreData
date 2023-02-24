@@ -14,6 +14,7 @@ struct CustomRow: View {
     
     var body: some View {
         ZStack {
+            
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color(Theme.accentColor!))
                 .frame(height: 160)
