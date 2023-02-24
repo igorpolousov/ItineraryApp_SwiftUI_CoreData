@@ -14,7 +14,7 @@ struct TripsView: View {
     @EnvironmentObject var tripsData: TripsData
     
     @State var tripIndexToEdit: Int?
-    
+
     var body: some View {
         ZStack {
             NavigationView {
@@ -91,24 +91,22 @@ struct TripsView: View {
                         HStack {
                             Spacer()
                             Button(action: {
-                                showingAddTripView.toggle()
+                                withAnimation {
+                                    showingAddTripView.toggle()
+                                }
                             }, label: {
                                 Text("+")
                                     .modifier(PlusButtonModifier())
-                                // Present "AddTripView"
-                            }).overCurrentContext(isPresented: $showingAddTripView, showWithAnimate: true, dismissWithAnimate: true, modalPresentationStyle: .crossDissolve, content: {
-                                return AnyView (
-                                    AddTripView(coreDataStack: coreDataStack, tripsData: tripsData.tripsData, tripIndexToEdit: tripIndexToEdit, onEnd: { updateTripsData in
-                                        tripsData.tripsData = updateTripsData
-                                        showingAddTripView.toggle()
-                                        tripIndexToEdit = nil
-                                    }))
                             })
                             .frame(width: 60, height: 60)
                             .padding(.trailing, 10)
                         }
                     }
                 }
+            }
+            
+            if showingAddTripView {
+                AddTripView(showingAddTripView: $showingAddTripView, tripIndexToEdit: $tripIndexToEdit)
             }
         }
     }

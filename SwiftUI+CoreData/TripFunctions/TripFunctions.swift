@@ -17,8 +17,8 @@ class TripFunctions {
         tripModel.image = tripModelImage?.pngData()
         tripModel.id = UUID()
         TripsData.trips.append(tripModel)
-        completion()
         coreDataStack.saveContext()
+        completion()
     }
     
     // read trip form core data
@@ -46,12 +46,10 @@ class TripFunctions {
     }
     
     // update trip data
-    static func updateTrip(at index: Int, title: String, tripModelImage: UIImage? = nil, coreDataStack: CoreDataStack, completion: @escaping ()->()) {
+    static func updateTrip(at index: Int, title: String, tripModelImage: UIImage? = nil, coreDataStack: CoreDataStack) {
         TripsData.trips[index].title = title
         TripsData.trips[index].image = tripModelImage?.pngData()
         coreDataStack.saveContext()
-        completion()
-        
     }
     
     // delete trip

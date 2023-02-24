@@ -17,13 +17,11 @@ struct AddTripView: View {
     @State private var inputImage: UIImage?
     @State private var showingAlert = false
     
-    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var tripsData: TripsData
+    @EnvironmentObject var coreDataStack: CoreDataStack
+    @Binding var showingAddTripView: Bool
+    @Binding var tripIndexToEdit: Int?
     
-    @State var coreDataStack: CoreDataStack
-    @State var tripsData: [TripModel]
-    
-    var tripIndexToEdit: Int?
-    var onEnd: ([TripModel])->()
     
     var body: some View {
         ZStack {
@@ -76,8 +74,7 @@ struct AddTripView: View {
                     
                     HStack {
                         Button("Cancel") {
-                            presentationMode.wrappedValue.dismiss()
-                            onEnd(tripsData)
+                            showingAddTripView.toggle()
                         }
                         .modifier(PopUpButton( cornerRadius: 10))
                         
@@ -88,22 +85,19 @@ struct AddTripView: View {
                                 showingAlert.toggle()
                             } else {
                                 if let tripIndexToEdit {
-                                    TripFunctions.updateTrip(at: tripIndexToEdit, title: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack, completion: {
-                                        tripsData = TripsData.trips
-                                    })
+                                    TripFunctions.updateTrip(at: tripIndexToEdit, title: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack)
                                 } else {
-                                    TripFunctions.createTrip(tripModelTitle: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack,completion: {
-                                        tripsData = TripsData.trips
+                                    TripFunctions.createTrip(tripModelTitle: tripName, tripModelImage: inputImage, coreDataStack: coreDataStack, completion: {
+                                        tripsData.tripsData = TripsData.trips
                                     })
                                 }
-                                presentationMode.wrappedValue.dismiss()
-                                onEnd(tripsData)
+                                showingAddTripView.toggle()
+                                tripIndexToEdit = nil
                             }
                         }
                         .modifier(PopUpButton(cornerRadius: 10))
                         .alert(isPresented: $showingAlert) {
                             Alert(title: Text("Better to have trip name"), message: Text("Enter trip name"), dismissButton: .cancel(Text("Got it")) )
-                            
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -126,10 +120,9 @@ struct AddTripView: View {
         .onAppear{
             if let index = tripIndexToEdit {
                 viewName = "  Edit trip"
-                let trip = tripsData[index]
+                let trip = tripsData.tripsData[index]
                 tripName = trip.title
-                guard let data = trip.image else {return}
-                guard let imageToEdit = UIImage(data: data) else {return}
+                guard let data = trip.image, let imageToEdit = UIImage(data: data) else {return}
                 image = Image(uiImage: imageToEdit)
             }
         }
