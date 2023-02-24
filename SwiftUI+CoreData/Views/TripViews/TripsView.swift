@@ -30,7 +30,9 @@ struct TripsView: View {
                                     .frame(height: 0)
                                 HStack {
                                     // Custom row for trip in List
-                                    CustomRow(title: trip.title, imageData: trip.image)
+                                    withAnimation(.easeInOut(duration: 0.25)) {
+                                        CustomRow(title: trip.title, imageData: trip.image)
+                                    }
                                     // Swiping actions
                                         // Delete trip action
                                         .swipeActions(edge: .trailing) {
@@ -91,7 +93,7 @@ struct TripsView: View {
                         HStack {
                             Spacer()
                             Button(action: {
-                                withAnimation {
+                                withAnimation(.easeInOut(duration: 0.25)) {
                                     showingAddTripView.toggle()
                                 }
                             }, label: {
@@ -106,7 +108,7 @@ struct TripsView: View {
             }
             
             if showingAddTripView {
-                AddTripView(showingAddTripView: $showingAddTripView, tripIndexToEdit: $tripIndexToEdit)
+                    AddTripView(showingAddTripView: $showingAddTripView, tripIndexToEdit: $tripIndexToEdit)
             }
         }
     }

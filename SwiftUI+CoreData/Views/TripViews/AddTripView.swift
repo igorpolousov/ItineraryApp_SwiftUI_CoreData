@@ -26,7 +26,7 @@ struct AddTripView: View {
     var body: some View {
         ZStack {
             Color.black
-                .opacity(0.45)
+                .opacity(0.55)
                 .edgesIgnoringSafeArea(.all)
         
             ZStack() {
