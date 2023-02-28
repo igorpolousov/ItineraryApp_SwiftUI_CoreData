@@ -23,8 +23,9 @@ struct TripsView: View {
                     List {
                         ForEach(tripsData.tripsData) { trip in
                             ZStack {
+                                let tripIndex = tripsData.tripsData.firstIndex(of: trip)
                                 // Present "ActivitiesView"
-                                NavigationLink(destination: ActivitiesView(title: trip.title, imageData: trip.image)) {}
+                                NavigationLink(destination: ActivitiesView(title: trip.title, imageData: trip.image, tripIndex: tripIndex!)) {}
                                     .buttonStyle(.plain)
                                     .opacity(0.0)
                                     .frame(height: 0)

@@ -10,7 +10,6 @@
 /*
  MARK: TO_DO
  
- - how to remove alert in "ViewTransitionExtension"? -> option 1: change .overCurrentContext to ZStack and add if statement with boolean var, if == true add in Ztack AddTrip or other popUp.
  - add alert if trying to create  day or action without name
  - add Day functions
  - add Activity functions

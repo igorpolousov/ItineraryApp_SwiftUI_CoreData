@@ -18,6 +18,7 @@ struct ActivitiesView: View {
     var title: String
     var imageData: Data?
     var image: Image?
+    var tripIndex: Int
     
     var body: some View {
         ZStack {
@@ -64,43 +65,36 @@ struct ActivitiesView: View {
                         Text("+")
                             .modifier(PlusButtonModifier())
                     })
-                    // Add Day or Activity action sheet
-                    .actionSheet(isPresented: $showingActionSheet, content: {
-                        ActionSheet(title: Text("What would you like to select?"),
-                                    buttons: [
-                                        .default(Text("Add Day")) {
-                                            showingAddDayView.toggle()
-                                        },
-                                        .default(Text("Add Activity")) {
-                                            showingAddActivityView.toggle()
-                                        },
-                                        .cancel()
-                                    ])
-                    })
-                    // Showing AddDayView
-                    .overCurrentContext(isPresented: $showingAddDayView, content: {
-                        return AnyView (
-                            AddDayView(onEnd: {
-                                showingAddDayView.toggle()
-                            })
-                        )
-                    })
                     .frame(width: 60, height: 60)
-                    .padding(.trailing, 20)
+                    .padding(.trailing, 15)
+                    // Add Day or Activity action sheet
+                    .confirmationDialog("What would you like to select?", isPresented: $showingActionSheet, titleVisibility: .automatic) {
+                        Button("Add Day") {
+                            showingAddDayView.toggle()
+                        }
+                        
+                        Button("Add Activity") {
+                            showingAddActivityView.toggle()
+                        }
+                        .disabled(tripsData.tripsData[tripIndex].dayModels?.count == 0)
+                        
+                        Button("Cancel", role: .cancel, action: {})
+
+                    } message: {
+                        Text("What would you like to select?")
+                    }
                 }
+            }
+            
+            // Showing AddDayView
+            if showingAddDayView {
+                
             }
 
             // Showing AddActivityView
             if showingAddActivityView {
-                ZStack {
-                }
-                .overCurrentContext(isPresented: $showingAddActivityView, content: {
-                    return AnyView (
-                        AddActivityView(onEnd: {
-                            showingAddActivityView.toggle()
-                        })
-                    )
-                })
+                
+              
             }
         }
         // Navigation bar setup
@@ -131,8 +125,6 @@ struct ActivitiesView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        
-        
     }
 }
 
