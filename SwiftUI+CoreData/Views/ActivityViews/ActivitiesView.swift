@@ -31,6 +31,7 @@ struct ActivitiesView: View {
                     GeometryReader { proxy in
                         Image(uiImage: imageToLoad)
                             .resizable()
+                            .opacity(0.45)
                             .aspectRatio(CGSize(width: proxy.size.width , height: proxy.size.height), contentMode: .fill)
                             .edgesIgnoringSafeArea(.all)
                     }
@@ -43,10 +44,14 @@ struct ActivitiesView: View {
             
             // List of Days with Activities
             List {
-                let trip = tripsData.tripsData[tripIndex]
-                
-               
+                if let dayModels = tripsData.tripsData[tripIndex].dayModels?.array as? [DayModel] {
+                    ForEach(dayModels) { dayModel in
+                        Section(header: HeaderView(text: dayModel.title!, descriptionText: dayModel.subtitle!)) {
+                        }
+                    }
+                }
             }
+            .scrollContentBackground(.hidden)
             
             // Floating action button
             VStack {

@@ -44,6 +44,7 @@
 		C2E43D6729A4CE2A00A2C4F1 /* TripModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E43D6129A4CE2A00A2C4F1 /* TripModel+CoreDataProperties.swift */; };
 		C2E43D6829A4CE2A00A2C4F1 /* ActivityModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E43D6229A4CE2A00A2C4F1 /* ActivityModel+CoreDataClass.swift */; };
 		C2E43D6929A4CE2A00A2C4F1 /* ActivityModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E43D6329A4CE2A00A2C4F1 /* ActivityModel+CoreDataProperties.swift */; };
+		C2FC1B0429AE3A050016DDB7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FC1B0329AE3A050016DDB7 /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		C2E43D6129A4CE2A00A2C4F1 /* TripModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TripModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2E43D6229A4CE2A00A2C4F1 /* ActivityModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C2E43D6329A4CE2A00A2C4F1 /* ActivityModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C2FC1B0329AE3A050016DDB7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			children = (
 				C25D8C80298D183D0035B7ED /* ActivitiesView.swift */,
 				C22EB7F229910BEA00D94463 /* AddActivityView.swift */,
+				C2FC1B0329AE3A050016DDB7 /* HeaderView.swift */,
 			);
 			path = ActivityViews;
 			sourceTree = "<group>";
@@ -213,9 +216,9 @@
 				C25D8C78298D0F830035B7ED /* Bitter-Regular.ttf */,
 				C25D8C77298D0F830035B7ED /* Lobster-Regular.ttf */,
 				C25D8C75298D0F830035B7ED /* Oswald-Regular.ttf */,
+				C25D8C7E298D16860035B7ED /* Theme.swift */,
 				C25D8C68298D03090035B7ED /* Assets.xcassets */,
 				C25D8C73298D03E50035B7ED /* Color.xcassets */,
-				C25D8C7E298D16860035B7ED /* Theme.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				C22EB8092993905700D94463 /* DateExtension.swift in Sources */,
 				C2E43D6529A4CE2A00A2C4F1 /* DayModel+CoreDataProperties.swift in Sources */,
 				C2E43D6729A4CE2A00A2C4F1 /* TripModel+CoreDataProperties.swift in Sources */,
+				C2FC1B0429AE3A050016DDB7 /* HeaderView.swift in Sources */,
 				C25D8C9F298D25490035B7ED /* CoreDataStack.swift in Sources */,
 				C22EB80E2993B40500D94463 /* ViewTransitionExtension.swift in Sources */,
 				C25D8C65298D03070035B7ED /* SwiftUI_CoreDataApp.swift in Sources */,
