@@ -12,7 +12,7 @@ struct AddActivityView: View {
     @State private var showingAlert =  false
     @State private var activityDescription: String = ""
     @State private var additionalDescription: String = ""
-    @Environment(\.presentationMode) var presentationMode
+    @Binding  var showingAddActivityView: Bool
     var onEnd: ()->()
     
     @State private var selectedDate: String = Date().dateFormatter()
@@ -72,7 +72,9 @@ struct AddActivityView: View {
                 
                 HStack {
                     Button("Cancel") {
-                        presentationMode.wrappedValue.dismiss()
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            showingAddActivityView.toggle()
+                        }
                         onEnd()
                     }
                     .modifier(PopUpButton( cornerRadius: 10))
@@ -84,7 +86,6 @@ struct AddActivityView: View {
                         if activityDescription == "" {
                             showingAlert.toggle()
                         } else {
-                            presentationMode.wrappedValue.dismiss()
                             onEnd()
                         }
                     }
@@ -104,11 +105,11 @@ struct AddActivityView: View {
     }
 }
 
-struct AddActivityView_Preview: PreviewProvider {
-    static var previews: some View {
-        AddActivityView(onEnd: {})
-    }
-}
+//struct AddActivityView_Preview: PreviewProvider {
+//    static var previews: some View {
+//        AddActivityView(onEnd: {})
+//    }
+//}
 
 
 

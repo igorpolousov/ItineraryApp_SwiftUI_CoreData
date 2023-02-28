@@ -13,8 +13,8 @@ struct AddDayView: View {
     
     @State private var date = Date()
     @State private var dayDescription = ""
-    @Environment(\.presentationMode) var presentationMode
     
+    @Binding var showingAddDayView: Bool
     var onEnd: ()->()
     
     var body: some View {
@@ -49,7 +49,9 @@ struct AddDayView: View {
                     
                     HStack {
                         Button("Cancel") {
-                            presentationMode.wrappedValue.dismiss()
+                            withAnimation(.easeInOut(duration: 0.25)) {
+                                showingAddDayView.toggle()
+                            }
                             onEnd()
                         }
                         .modifier(PopUpButton( cornerRadius: 10))
@@ -58,7 +60,7 @@ struct AddDayView: View {
                         
                         Button("Save") {
                             // Update days in trip model
-                            presentationMode.wrappedValue.dismiss()
+                           
                             onEnd()
                         }
                         .modifier(PopUpButton(cornerRadius: 10))
@@ -75,8 +77,8 @@ struct AddDayView: View {
 }
 
 
-struct AddDayView_Preview: PreviewProvider {
-    static var previews: some View {
-        AddDayView(onEnd: {})
-    }
-}
+//struct AddDayView_Preview: PreviewProvider {
+//    static var previews: some View {
+//        AddDayView(onEnd: {})
+//    }
+//}

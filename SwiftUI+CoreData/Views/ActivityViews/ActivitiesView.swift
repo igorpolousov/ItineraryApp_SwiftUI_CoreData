@@ -70,11 +70,15 @@ struct ActivitiesView: View {
                     // Add Day or Activity action sheet
                     .confirmationDialog("What would you like to select?", isPresented: $showingActionSheet, titleVisibility: .automatic) {
                         Button("Add Day") {
-                            showingAddDayView.toggle()
+                            withAnimation(.easeInOut(duration: 0.25)) {
+                                showingAddDayView.toggle()
+                            }
                         }
                         
                         Button("Add Activity") {
-                            showingAddActivityView.toggle()
+                            withAnimation(.easeInOut(duration: 0.25)) {
+                                showingAddActivityView.toggle()
+                            }
                         }
                         .disabled(tripsData.tripsData[tripIndex].dayModels?.count == 0)
                         
@@ -88,13 +92,12 @@ struct ActivitiesView: View {
             
             // Showing AddDayView
             if showingAddDayView {
-                
+                AddDayView(showingAddDayView: $showingAddDayView, onEnd: {})
             }
 
             // Showing AddActivityView
             if showingAddActivityView {
-                
-              
+                AddActivityView(showingAddActivityView: $showingAddActivityView, onEnd: {})
             }
         }
         // Navigation bar setup
