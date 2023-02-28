@@ -15,6 +15,9 @@ struct ActivitiesView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var tripsData: TripsData
     
+    let mockSections = ["Section_1", "Section_2","Section_3"]
+    let mockRows = ["Row-1", "Row-2", "Row-3"]
+    
     var title: String
     var imageData: Data?
     var image: Image?
@@ -40,18 +43,9 @@ struct ActivitiesView: View {
             
             // List of Days with Activities
             List {
-                ForEach(tripsData.tripsData) { trip in
-                    let dayModels = Array(arrayLiteral: trip.dayModels) as? [DayModel]
-                    ForEach(dayModels ?? []) { dayModel in
-                        Section(header:Text(dayModel.title ?? "Section title")) {
-                            let activityModels = Array(arrayLiteral: dayModel.activityModels) as? [ActivityModel]
-                            ForEach(activityModels ?? []) { activity in
-                                Text(activity.title ?? "Actitvity title here")
-                            }
-                            
-                        }
-                    }
-                }
+                let trip = tripsData.tripsData[tripIndex]
+                
+               
             }
             
             // Floating action button
@@ -92,7 +86,7 @@ struct ActivitiesView: View {
             
             // Showing AddDayView
             if showingAddDayView {
-                AddDayView(showingAddDayView: $showingAddDayView, onEnd: {})
+                AddDayView(showingAddDayView: $showingAddDayView, tripIndex: tripIndex, onEnd: {})
             }
 
             // Showing AddActivityView

@@ -14,8 +14,11 @@ struct AddDayView: View {
     @State private var date = Date()
     @State private var dayDescription = ""
     
+    @EnvironmentObject var coreDataStack: CoreDataStack
     @Binding var showingAddDayView: Bool
+    var tripIndex: Int
     var onEnd: ()->()
+    
     
     var body: some View {
         ZStack {
@@ -60,7 +63,14 @@ struct AddDayView: View {
                         
                         Button("Save") {
                             // Update days in trip model
-                           
+                            let dayModel = DayModel(context: coreDataStack.managedContext)
+                            dayModel.title = date.dateFormatter()
+                            dayModel.subtitle = dayDescription
+                            dayModel.id = UUID()
+                            DayFunctions.createDay(tripIndex: tripIndex, dayModel: dayModel, coreDataStack: coreDataStack)
+                            withAnimation(.easeInOut(duration: 0.25)) {
+                                showingAddDayView.toggle()
+                            }
                             onEnd()
                         }
                         .modifier(PopUpButton(cornerRadius: 10))
