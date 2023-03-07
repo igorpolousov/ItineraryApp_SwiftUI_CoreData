@@ -10,11 +10,9 @@
 /*
  MARK: TO_DO
  
- - add alert if trying to create  day or action without name
  - add Activity Row cell
  - add Activity functions
- 
- 
+
  */
 
 
