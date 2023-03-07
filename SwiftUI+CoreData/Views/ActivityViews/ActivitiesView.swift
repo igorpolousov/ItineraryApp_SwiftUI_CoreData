@@ -47,6 +47,11 @@ struct ActivitiesView: View {
                 if let dayModels = tripsData.tripsData[tripIndex].dayModels?.array as? [DayModel] {
                     ForEach(dayModels) { dayModel in
                         Section(header: HeaderView(text: dayModel.title!, descriptionText: dayModel.subtitle!)) {
+                            if let activities = dayModel.activityModels?.array as? [ActivityModel] {
+                                ForEach(activities) { activity in
+                                    ActivityView(title: activity.title ?? "", subtitle: activity.subtitle ?? "")
+                                }
+                            }
                         }
                     }
                 }
@@ -96,7 +101,7 @@ struct ActivitiesView: View {
 
             // Showing AddActivityView
             if showingAddActivityView {
-                AddActivityView(showingAddActivityView: $showingAddActivityView, onEnd: {})
+                AddActivityView(showingAddActivityView: $showingAddActivityView, tripIndex:tripIndex, onEnd: {})
             }
         }
         // Navigation bar setup

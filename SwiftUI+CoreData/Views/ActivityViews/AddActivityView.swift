@@ -12,20 +12,19 @@ struct AddActivityView: View {
     @State private var showingAlert =  false
     @State private var activityDescription: String = ""
     @State private var additionalDescription: String = ""
+    @State private var selectedDate: String = Date().dateFormatter()
     @Binding  var showingAddActivityView: Bool
+    var tripIndex: Int
     var onEnd: ()->()
     
-    @State private var selectedDate: String = Date().dateFormatter()
-    @State private var pickerMockData = [Date().dateFormatter(), Date().add(days: 1).dateFormatter(), Date().add(days: 2).dateFormatter(), Date().add(days: 3).dateFormatter()]
-    
+
     var body: some View {
         
         ZStack {
             Color.black
                 .opacity(0.45)
                 .edgesIgnoringSafeArea(.all)
-            
-            
+          
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color(Theme.backgroundColor!))
                 .modifier(AddViewsModifier(height: 330, bottomPadding: 200))
@@ -38,17 +37,17 @@ struct AddActivityView: View {
                     .padding(.leading, 30)
                     .font(Font(Theme.mainFont!))
                 
-                
-                Picker("Choose date", selection: $selectedDate) {
-                    ForEach(pickerMockData, id: \.self) { date in
-                        Text("\(date)")
-                            .font(Font(Theme.readFont!))
+                if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
+                    Picker("Choose date", selection: $selectedDate) {
+                        ForEach(dayModels, id: \.self) { dayModel in
+                            Text(dayModel.title ?? "")
+                                .font(Font(Theme.readFont!))
+                        }
                     }
+                    .frame(width: 330, height: 40)
+                    .font(Font(Theme.dayFont!))
+                    .tint(Color.black)
                 }
-                .frame(width: 330, height: 40)
-                .font(Font(Theme.dayFont!))
-                .tint(Color.black)
-                
                 
                 HStack(spacing: 20) {
                     Image("hotel")
@@ -62,7 +61,6 @@ struct AddActivityView: View {
                     Image("flight")
                         .foregroundColor(Color(Theme.accentColor!))
                 }
-                
                 
                 TextField("  Add Activity Description", text: $activityDescription)
                     .modifier(TextFieldModifier())
@@ -98,8 +96,6 @@ struct AddActivityView: View {
                 .frame(width: 360)
             }
             .padding(.bottom, 190)
-            
-         
             
         }
     }
