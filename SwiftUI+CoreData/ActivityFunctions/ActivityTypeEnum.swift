@@ -8,9 +8,9 @@
 import UIKit
 
 enum ActivityType: Int32 {
-    case auto
-    case flight
+    case hotel
+    case taxi
     case train
     case food
-    case hotel
+    case flight
 }

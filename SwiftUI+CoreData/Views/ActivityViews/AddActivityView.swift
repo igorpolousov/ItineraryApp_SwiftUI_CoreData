@@ -14,6 +14,13 @@ struct AddActivityView: View {
     @State private var additionalDescription: String = ""
     @State private var selectedDate: String = Date().dateFormatter()
     @Binding  var showingAddActivityView: Bool
+    @State private var hotelTapped: Bool = false
+    @State private var taxiTapped: Bool = false
+    @State private var trainTapped: Bool = false
+    @State private var foodTapped: Bool = false
+    @State private var flightTapped: Bool = false
+    @State private var activityType: ActivityType = .hotel
+   
     var tripIndex: Int
     var onEnd: ()->()
     
@@ -50,16 +57,61 @@ struct AddActivityView: View {
                 }
                 
                 HStack(spacing: 20) {
-                    Image("hotel")
-                        .foregroundColor(Color(Theme.accentColor!))
-                    Image("taxi")
-                        .foregroundColor(Color(Theme.accentColor!))
-                    Image("train")
-                        .foregroundColor(Color(Theme.accentColor!))
-                    Image("food")
-                        .foregroundColor(Color(Theme.accentColor!))
-                    Image("flight")
-                        .foregroundColor(Color(Theme.accentColor!))
+                    Button {
+                        changeButtonColor(button: &hotelTapped)
+                        if hotelTapped == true {
+                            activityType = ActivityType(rawValue: 0) ?? .hotel
+                            print(activityType)
+                        }
+                    } label: {
+                        Image("hotel")
+                            .foregroundColor(hotelTapped ? Color(Theme.tintColor!) : Color(Theme.accentColor!) )
+                    }
+                   
+
+                    Button {
+                      changeButtonColor(button: &taxiTapped)
+                        if taxiTapped == true {
+                            activityType = ActivityType(rawValue: 1) ?? .hotel
+                            print(activityType)
+                        }
+                    } label: {
+                        Image("taxi")
+                            .foregroundColor(taxiTapped ? Color(Theme.tintColor!) : Color(Theme.accentColor!))
+                    }
+                    
+                    Button {
+                      changeButtonColor(button: &trainTapped)
+                        if trainTapped == true {
+                            activityType = ActivityType(rawValue: 2) ?? .hotel
+                            print(activityType)
+                        }
+                    } label: {
+                        Image("train")
+                            .foregroundColor(trainTapped ? Color(Theme.tintColor!) : Color(Theme.accentColor!))
+                    }
+                    
+                    Button {
+                        changeButtonColor(button: &foodTapped)
+                        if foodTapped == true {
+                            activityType = ActivityType(rawValue: 3) ?? .hotel
+                            print(activityType)
+                        }
+                    } label: {
+                        Image("food")
+                            .foregroundColor(foodTapped ? Color(Theme.tintColor!) : Color(Theme.accentColor!))
+                    }
+                    
+                    Button {
+                        changeButtonColor(button: &flightTapped)
+                        if flightTapped == true {
+                            activityType = ActivityType(rawValue: 4) ?? .hotel
+                            print(activityType)
+                        }
+                    } label: {
+                        Image("flight")
+                            .foregroundColor(flightTapped ? Color(Theme.tintColor!) : Color(Theme.accentColor!))
+                    }
                 }
                 
                 TextField("  Add Activity Description", text: $activityDescription)
@@ -98,6 +150,15 @@ struct AddActivityView: View {
             .padding(.bottom, 190)
             
         }
+    }
+    
+    func changeButtonColor( button: inout Bool) {
+        hotelTapped = false
+        taxiTapped = false
+        foodTapped = false
+        flightTapped = false
+        trainTapped = false
+        button = true
     }
 }
 

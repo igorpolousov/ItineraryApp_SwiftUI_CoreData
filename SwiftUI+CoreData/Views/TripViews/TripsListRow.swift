@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomRow: View {
+struct TripsListRow: View {
     
     var title: String
     var imageData: Data?

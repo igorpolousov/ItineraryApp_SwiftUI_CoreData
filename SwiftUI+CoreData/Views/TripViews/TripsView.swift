@@ -31,7 +31,7 @@ struct TripsView: View {
                                     .frame(height: 0)
                                 HStack {
                                     // Custom row for trip in List
-                                        CustomRow(title: trip.title, imageData: trip.image)
+                                        TripsListRow(title: trip.title, imageData: trip.image)
                                     // Swiping actions
                                         // Delete trip action
                                         .swipeActions(edge: .trailing) {

@@ -37,7 +37,7 @@
 		C25D8C9D298D20BE0035B7ED /* ActivityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C9C298D20BE0035B7ED /* ActivityFunctions.swift */; };
 		C25D8C9F298D25490035B7ED /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D8C9E298D25490035B7ED /* CoreDataStack.swift */; };
 		C29B996C2993C82600441788 /* TODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29B996B2993C82600441788 /* TODO.swift */; };
-		C29B996E2993E7BB00441788 /* CustomRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29B996D2993E7BB00441788 /* CustomRow.swift */; };
+		C29B996E2993E7BB00441788 /* TripsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29B996D2993E7BB00441788 /* TripsListRow.swift */; };
 		C2E43D5D29A39DA800A2C4F1 /* ImagePickerWithCrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E43D5C29A39DA800A2C4F1 /* ImagePickerWithCrop.swift */; };
 		C2E43D6429A4CE2A00A2C4F1 /* DayModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E43D5E29A4CE2A00A2C4F1 /* DayModel+CoreDataClass.swift */; };
 		C2E43D6529A4CE2A00A2C4F1 /* DayModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E43D5F29A4CE2A00A2C4F1 /* DayModel+CoreDataProperties.swift */; };
@@ -81,7 +81,7 @@
 		C25D8C9C298D20BE0035B7ED /* ActivityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFunctions.swift; sourceTree = "<group>"; };
 		C25D8C9E298D25490035B7ED /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C29B996B2993C82600441788 /* TODO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
-		C29B996D2993E7BB00441788 /* CustomRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRow.swift; sourceTree = "<group>"; };
+		C29B996D2993E7BB00441788 /* TripsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsListRow.swift; sourceTree = "<group>"; };
 		C2E43D5C29A39DA800A2C4F1 /* ImagePickerWithCrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerWithCrop.swift; sourceTree = "<group>"; };
 		C2E43D5E29A4CE2A00A2C4F1 /* DayModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C2E43D5F29A4CE2A00A2C4F1 /* DayModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			children = (
 				C25D8C66298D03070035B7ED /* TripsView.swift */,
 				C22EB7FB29926CB500D94463 /* AddTripView.swift */,
-				C29B996D2993E7BB00441788 /* CustomRow.swift */,
+				C29B996D2993E7BB00441788 /* TripsListRow.swift */,
 			);
 			path = TripViews;
 			sourceTree = "<group>";
@@ -366,7 +366,7 @@
 				C2E43D6929A4CE2A00A2C4F1 /* ActivityModel+CoreDataProperties.swift in Sources */,
 				C25D8C9D298D20BE0035B7ED /* ActivityFunctions.swift in Sources */,
 				C22EB80C299395E600D94463 /* TripsData.swift in Sources */,
-				C29B996E2993E7BB00441788 /* CustomRow.swift in Sources */,
+				C29B996E2993E7BB00441788 /* TripsListRow.swift in Sources */,
 				C25D8C7F298D16870035B7ED /* Theme.swift in Sources */,
 				C22EB7FC29926CB500D94463 /* AddTripView.swift in Sources */,
 				C2E43D6429A4CE2A00A2C4F1 /* DayModel+CoreDataClass.swift in Sources */,

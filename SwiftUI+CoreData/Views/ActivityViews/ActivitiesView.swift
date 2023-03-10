@@ -15,9 +15,6 @@ struct ActivitiesView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var tripsData: TripsData
     
-    let mockSections = ["Section_1", "Section_2","Section_3"]
-    let mockRows = ["Row-1", "Row-2", "Row-3"]
-    
     var title: String
     var imageData: Data?
     var image: Image?
@@ -71,6 +68,7 @@ struct ActivitiesView: View {
                     })
                     .frame(width: 60, height: 60)
                     .padding(.trailing, 15)
+                    
                     // Add Day or Activity action sheet
                     .confirmationDialog("What would you like to select?", isPresented: $showingActionSheet, titleVisibility: .automatic) {
                         Button("Add Day") {
