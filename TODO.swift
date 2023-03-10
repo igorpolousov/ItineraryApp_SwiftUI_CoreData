@@ -10,8 +10,7 @@
 /*
  MARK: TO_DO
  
- - add Activity Row cell
- - add Activity functions
+- picker issue: doesn't pick value
 
  */
 

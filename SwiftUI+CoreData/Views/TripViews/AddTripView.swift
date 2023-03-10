@@ -19,9 +19,9 @@ struct AddTripView: View {
     
     @EnvironmentObject var tripsData: TripsData
     @EnvironmentObject var coreDataStack: CoreDataStack
+    
     @Binding var showingAddTripView: Bool
     @Binding var tripIndexToEdit: Int?
-    
     
     var body: some View {
         ZStack {
@@ -136,9 +136,3 @@ struct AddTripView: View {
     }
 }
 
-
-//struct AddTripPreview: PreviewProvider {
-//    static var previews: some View {
-//        AddTripView(coreDataStack: CoreDataStack(modelName: "SwiftUI+CoreData"), mockTrips: [], onEnd: {})
-//    }
-//}

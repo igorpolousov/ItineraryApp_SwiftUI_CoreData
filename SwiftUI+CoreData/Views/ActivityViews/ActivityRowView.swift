@@ -18,7 +18,6 @@ struct ActivityView: View {
             
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color(Theme.accentColor!))
-                .frame(height: 65)
             
             HStack {
                 Image("hotel")

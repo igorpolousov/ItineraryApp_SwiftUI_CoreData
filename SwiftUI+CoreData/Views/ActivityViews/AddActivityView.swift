@@ -12,8 +12,12 @@ struct AddActivityView: View {
     @State private var showingAlert =  false
     @State private var activityDescription: String = ""
     @State private var additionalDescription: String = ""
-    @State private var selectedDate: String = Date().dateFormatter()
+    @State private var selectedDate: String = ""
+    
     @Binding  var showingAddActivityView: Bool
+    @EnvironmentObject var coreDataStack: CoreDataStack
+    @EnvironmentObject var tripsData: TripsData
+    
     @State private var hotelTapped: Bool = false
     @State private var taxiTapped: Bool = false
     @State private var trainTapped: Bool = false
@@ -22,9 +26,9 @@ struct AddActivityView: View {
     @State private var activityType: ActivityType = .hotel
    
     var tripIndex: Int
+    //var dayIndex: Int = 0
     var onEnd: ()->()
     
-
     var body: some View {
         
         ZStack {
@@ -47,7 +51,7 @@ struct AddActivityView: View {
                 if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
                     Picker("Choose date", selection: $selectedDate) {
                         ForEach(dayModels, id: \.self) { dayModel in
-                            Text(dayModel.title ?? "")
+                            Text(dayModel.title!).tag(dayModel.title)
                                 .font(Font(Theme.readFont!))
                         }
                     }
@@ -55,12 +59,11 @@ struct AddActivityView: View {
                     .font(Font(Theme.dayFont!))
                     .tint(Color.black)
                 }
-                
                 HStack(spacing: 20) {
                     Button {
                         changeButtonColor(button: &hotelTapped)
                         if hotelTapped == true {
-                            activityType = ActivityType(rawValue: 0) ?? .hotel
+                            activityType = ActivityType.hotel
                             print(activityType)
                         }
                     } label: {
@@ -68,11 +71,10 @@ struct AddActivityView: View {
                             .foregroundColor(hotelTapped ? Color(Theme.tintColor!) : Color(Theme.accentColor!) )
                     }
                    
-
                     Button {
                       changeButtonColor(button: &taxiTapped)
                         if taxiTapped == true {
-                            activityType = ActivityType(rawValue: 1) ?? .hotel
+                            activityType = ActivityType.taxi
                             print(activityType)
                         }
                     } label: {
@@ -83,7 +85,7 @@ struct AddActivityView: View {
                     Button {
                       changeButtonColor(button: &trainTapped)
                         if trainTapped == true {
-                            activityType = ActivityType(rawValue: 2) ?? .hotel
+                            activityType = ActivityType.train
                             print(activityType)
                         }
                     } label: {
@@ -94,7 +96,7 @@ struct AddActivityView: View {
                     Button {
                         changeButtonColor(button: &foodTapped)
                         if foodTapped == true {
-                            activityType = ActivityType(rawValue: 3) ?? .hotel
+                            activityType = ActivityType.food
                             print(activityType)
                         }
                     } label: {
@@ -105,7 +107,7 @@ struct AddActivityView: View {
                     Button {
                         changeButtonColor(button: &flightTapped)
                         if flightTapped == true {
-                            activityType = ActivityType(rawValue: 4) ?? .hotel
+                            activityType = ActivityType.flight
                             print(activityType)
                         }
                     } label: {
@@ -136,13 +138,26 @@ struct AddActivityView: View {
                         if activityDescription == "" {
                             showingAlert.toggle()
                         } else {
-                            onEnd()
+                            if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
+                                print(dayModels)
+                                for dayModel in dayModels {
+                                    if dayModel.title == selectedDate {
+                                        let dayIndex = dayModels.firstIndex(of: dayModel)!
+                                        ActivityFunctions.createActivity(at: tripIndex, for: dayIndex, activityTitle: activityDescription, activitySubTitle: additionalDescription, activityType: activityType.rawValue, coreDataStack: coreDataStack)
+
+                                    }
+                                }
+                            }
+                            withAnimation(.easeInOut(duration: 0.25)) {
+                                showingAddActivityView.toggle()
+                            }
                         }
+                       
+                        onEnd()
                     }
                     .modifier(PopUpButton(cornerRadius: 10))
                     .alert(isPresented: $showingAlert) {
                         Alert(title: Text("Better to have activity name"), message: Text("Enter Activity name"), dismissButton: .cancel(Text("Got it")) )
-                        
                     }
                 }
                 .frame(width: 360)
@@ -162,11 +177,6 @@ struct AddActivityView: View {
     }
 }
 
-//struct AddActivityView_Preview: PreviewProvider {
-//    static var previews: some View {
-//        AddActivityView(onEnd: {})
-//    }
-//}
 
 
 

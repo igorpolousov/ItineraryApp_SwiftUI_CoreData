@@ -39,8 +39,3 @@ struct TripsListRow: View {
     }
 }
 
-//struct CustomRow_Preview: PreviewProvider {
-//    static var previews: some View {
-//        CustomRow(title: "Some text")
-//    }
-//}

@@ -22,7 +22,7 @@ struct ActivitiesView: View {
     
     var body: some View {
         ZStack {
-            // If exit trip image
+            // If exist trip image
             if let imageData {
                 if let imageToLoad = UIImage(data: imageData) {
                     GeometryReader { proxy in
@@ -46,7 +46,11 @@ struct ActivitiesView: View {
                         Section(header: HeaderView(text: dayModel.title!, descriptionText: dayModel.subtitle!)) {
                             if let activities = dayModel.activityModels?.array as? [ActivityModel] {
                                 ForEach(activities) { activity in
-                                    ActivityView(title: activity.title ?? "", subtitle: activity.subtitle ?? "")
+                                    ZStack {
+                                        ActivityView(title: activity.title ?? "", subtitle: activity.subtitle ?? "")
+                                    }
+                                    .listRowSeparator(.hidden)
+                                    .listRowBackground(Color.clear)
                                 }
                             }
                         }
