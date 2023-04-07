@@ -61,6 +61,7 @@ struct AddActivityView: View {
                     .font(Font(Theme.dayFont!))
                     .tint(Color.black)
                 }
+                
                 HStack(spacing: 20) {
                     Button {
                         changeButtonColor(button: &hotelTapped)
@@ -145,6 +146,11 @@ struct AddActivityView: View {
                                 for dayModel in dayModels {
                                     if dayModel.title == selectedDate {
                                         let dayIndex = dayModels.firstIndex(of: dayModel)!
+                                        print(tripIndex)
+                                        print(activityDescription)
+                                        print(additionalDescription)
+                                        print(activityType.rawValue)
+                            
                                         ActivityFunctions.createActivity(at: tripIndex, for: dayIndex, activityTitle: activityDescription, activitySubTitle: additionalDescription, activityType: activityType.rawValue, coreDataStack: coreDataStack)
 
                                     }

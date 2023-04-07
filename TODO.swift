@@ -10,7 +10,8 @@
 /*
  MARK: TO_DO
  
-- picker issue: doesn't pick value
+ - date sort in days don't work correctly
+ - create activity function don't insert correct values
 
  */
 
