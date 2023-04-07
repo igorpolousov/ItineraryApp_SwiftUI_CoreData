@@ -67,7 +67,6 @@ struct AddActivityView: View {
                         changeButtonColor(button: &hotelTapped)
                         if hotelTapped == true {
                             activityType = ActivityType.hotel
-                            print(activityType)
                         }
                     } label: {
                         Image("hotel")
@@ -78,7 +77,6 @@ struct AddActivityView: View {
                       changeButtonColor(button: &taxiTapped)
                         if taxiTapped == true {
                             activityType = ActivityType.taxi
-                            print(activityType)
                         }
                     } label: {
                         Image("taxi")
@@ -89,7 +87,6 @@ struct AddActivityView: View {
                       changeButtonColor(button: &trainTapped)
                         if trainTapped == true {
                             activityType = ActivityType.train
-                            print(activityType)
                         }
                     } label: {
                         Image("train")
@@ -100,7 +97,6 @@ struct AddActivityView: View {
                         changeButtonColor(button: &foodTapped)
                         if foodTapped == true {
                             activityType = ActivityType.food
-                            print(activityType)
                         }
                     } label: {
                         Image("food")
@@ -111,7 +107,6 @@ struct AddActivityView: View {
                         changeButtonColor(button: &flightTapped)
                         if flightTapped == true {
                             activityType = ActivityType.flight
-                            print(activityType)
                         }
                     } label: {
                         Image("flight")

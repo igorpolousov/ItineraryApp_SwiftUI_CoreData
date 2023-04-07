@@ -11,7 +11,6 @@
  MARK: TO_DO
  
  - date sort in days don't work correctly
- - create activity function don't insert correct values
 
  */
 

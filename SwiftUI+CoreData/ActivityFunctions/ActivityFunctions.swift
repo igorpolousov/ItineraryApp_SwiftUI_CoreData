@@ -14,6 +14,7 @@ class ActivityFunctions {
         activityModel.title = activityTitle
         activityModel.subtitle = activitySubTitle
         activityModel.actitvityType = activityType
+        activityModel.id = UUID()
         let dayModel = TripsData.trips[tripIndex].dayModels?[dayIndex] as? DayModel
         dayModel?.addToActivityModels(activityModel)
         coreDataStack.saveContext()
