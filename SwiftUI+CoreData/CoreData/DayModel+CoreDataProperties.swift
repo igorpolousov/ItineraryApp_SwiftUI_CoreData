@@ -18,7 +18,7 @@ extension DayModel {
 
     @NSManaged public var id: UUID?
     @NSManaged public var subtitle: String?
-    @NSManaged public var title: String?
+    @NSManaged public var title: Date?
     @NSManaged public var tripModel: TripModel?
     @NSManaged public var activityModels: NSOrderedSet?
 

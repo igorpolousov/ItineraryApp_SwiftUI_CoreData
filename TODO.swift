@@ -10,7 +10,10 @@
 /*
  MARK: TO_DO
  
- - date sort in days don't work correctly
+ - Activities and days List width need correction( make wider)
+ - add delete function to activities
+ - add edit function to activities
+ - add reorder funtion to activities
 
  */
 

@@ -43,7 +43,7 @@ struct ActivitiesView: View {
             List {
                 if let dayModels = tripsData.tripsData[tripIndex].dayModels?.array as? [DayModel] {
                     ForEach(dayModels) { dayModel in
-                        Section(header: HeaderView(text: dayModel.title!, descriptionText: dayModel.subtitle!)) {
+                        Section(header: HeaderView(text: dayModel.title!.dateFormatter(), descriptionText: dayModel.subtitle!)) {
                             if let activities = dayModel.activityModels?.array as? [ActivityModel] {
                                 ForEach(activities) { activity in
                                     ZStack {
@@ -104,7 +104,7 @@ struct ActivitiesView: View {
             // Showing AddActivityView
             if showingAddActivityView {
                 if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
-                    let firstDate = dayModels.first?.title ?? ""
+                    let firstDate = dayModels.first?.title?.dateFormatter() ?? ""
                     AddActivityView(selectedDate: firstDate, showingAddActivityView: $showingAddActivityView, tripIndex:tripIndex, onEnd: {})
                 }
             }

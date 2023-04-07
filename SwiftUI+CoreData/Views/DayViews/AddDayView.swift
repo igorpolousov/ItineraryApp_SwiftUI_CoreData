@@ -64,7 +64,7 @@ struct AddDayView: View {
                         Button("Save") {
                             // Update days in trip model
                             let dayModel = DayModel(context: coreDataStack.managedContext)
-                            dayModel.title = date.dateFormatter()
+                            dayModel.title = date
                             dayModel.subtitle = dayDescription
                             dayModel.id = UUID()
                             DayFunctions.createDay(tripIndex: tripIndex, dayModel: dayModel, coreDataStack: coreDataStack)

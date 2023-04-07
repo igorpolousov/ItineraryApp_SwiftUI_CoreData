@@ -52,7 +52,7 @@ struct AddActivityView: View {
                     Picker("Choose date", selection: $selectedDate) {
                         ForEach(dayModels, id: \.self) { dayModel in
                             if let title = dayModel.title {
-                                Text(title).tag(title)
+                                Text(title.dateFormatter()).tag(title)
                                     .font(Font(Theme.readFont!))
                             }
                         }
@@ -139,7 +139,7 @@ struct AddActivityView: View {
                             if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
                                 print(dayModels)
                                 for dayModel in dayModels {
-                                    if dayModel.title == selectedDate {
+                                    if dayModel.title?.dateFormatter() == selectedDate {
                                         let dayIndex = dayModels.firstIndex(of: dayModel)!
                                         ActivityFunctions.createActivity(at: tripIndex, for: dayIndex, activityTitle: activityDescription, activitySubTitle: additionalDescription, activityType: activityType.rawValue, coreDataStack: coreDataStack)
                                     }

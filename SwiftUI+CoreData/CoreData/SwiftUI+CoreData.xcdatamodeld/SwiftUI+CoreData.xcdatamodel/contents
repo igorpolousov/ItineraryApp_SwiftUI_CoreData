@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E252" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ActivityModel" representedClassName="ActivityModel" syncable="YES">
         <attribute name="actitvityType" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -10,7 +10,7 @@
     <entity name="DayModel" representedClassName="DayModel" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="subtitle" optional="YES" attributeType="String"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="activityModels" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ActivityModel" inverseName="dayModel" inverseEntity="ActivityModel"/>
         <relationship name="tripModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TripModel" inverseName="dayModels" inverseEntity="TripModel"/>
     </entity>
