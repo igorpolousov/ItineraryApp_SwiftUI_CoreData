@@ -111,6 +111,7 @@ struct ActivitiesView: View {
         }
         // Navigation bar setup
         .navigationBarBackButtonHidden(true)
+        .toolbarBackground(Color(uiColor: Theme.backgroundColor!), for: .navigationBar)
         .toolbar {
             // Navigation bar title
             ToolbarItem(placement: .principal) {
