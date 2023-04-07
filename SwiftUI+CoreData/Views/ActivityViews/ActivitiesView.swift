@@ -47,7 +47,7 @@ struct ActivitiesView: View {
                             if let activities = dayModel.activityModels?.array as? [ActivityModel] {
                                 ForEach(activities) { activity in
                                     ZStack {
-                                        ActivityView(title: activity.title ?? "", subtitle: activity.subtitle ?? "")
+                                        ActivityView(title: activity.title ?? "", subtitle: activity.subtitle ?? "", actitvityImage: setupImage(activityType: activity.actitvityType))
                                     }
                                     .listRowSeparator(.hidden)
                                     .listRowBackground(Color.clear)
@@ -137,6 +137,24 @@ struct ActivitiesView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    func setupImage(activityType: Int32) -> String {
+        
+        switch activityType {
+        case 0:
+            return "hotel"
+        case 1:
+            return "taxi"
+        case 2:
+            return "train"
+        case 3:
+            return "food"
+        case 4:
+            return "flight"
+        default:
+            return "hotel"
+        }
     }
 }
 

@@ -11,6 +11,7 @@ struct ActivityView: View {
     
     @State var title: String = "Label"
     @State var subtitle: String = "SubtitleLabel"
+    @State var actitvityImage: String = ""
     
     var body: some View {
         
@@ -20,7 +21,7 @@ struct ActivityView: View {
                 .fill(Color(Theme.accentColor!))
             
             HStack {
-                Image("hotel")
+                Image(actitvityImage)
                     .foregroundColor(Color(Theme.tintColor!))
                     .shadow(color:.white ,radius: 1.5)
                 
