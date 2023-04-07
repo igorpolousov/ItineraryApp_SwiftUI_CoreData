@@ -12,7 +12,7 @@ struct AddActivityView: View {
     @State private var showingAlert =  false
     @State private var activityDescription: String = ""
     @State private var additionalDescription: String = ""
-    @State private var selectedDate: String = ""
+    @State var selectedDate: String = ""
     
     @Binding  var showingAddActivityView: Bool
     @EnvironmentObject var coreDataStack: CoreDataStack
@@ -51,8 +51,10 @@ struct AddActivityView: View {
                 if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
                     Picker("Choose date", selection: $selectedDate) {
                         ForEach(dayModels, id: \.self) { dayModel in
-                            Text(dayModel.title!).tag(dayModel.title)
-                                .font(Font(Theme.readFont!))
+                            if let title = dayModel.title {
+                                Text(title).tag(title)
+                                    .font(Font(Theme.readFont!))
+                            }
                         }
                     }
                     .frame(width: 330, height: 40)

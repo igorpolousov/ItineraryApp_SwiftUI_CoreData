@@ -21,6 +21,7 @@
  - Image.clipped - обрезает только видмую часть картинки при этом сохраняет оригинальный размер картинки, что при использовании в верхнем слое ZStack, может сделать недоступным нижние view, потому что картинка будет накрывать их
  - List view works only with @Published objects to automatically update data
  - Absence of cool features that presented in UIKit. To use features of UIKit need to create separate view with coordinator class
+ - Picker doesn't work with optional values. safe unwrap values before use in Picker
  */
 
 

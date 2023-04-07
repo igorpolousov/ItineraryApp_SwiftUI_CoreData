@@ -103,7 +103,10 @@ struct ActivitiesView: View {
 
             // Showing AddActivityView
             if showingAddActivityView {
-                AddActivityView(showingAddActivityView: $showingAddActivityView, tripIndex:tripIndex, onEnd: {})
+                if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
+                    let firstDate = dayModels.first?.title ?? ""
+                    AddActivityView(selectedDate: firstDate, showingAddActivityView: $showingAddActivityView, tripIndex:tripIndex, onEnd: {})
+                }
             }
         }
         // Navigation bar setup
