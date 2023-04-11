@@ -125,6 +125,7 @@ struct AddTripView: View {
                 let trip = tripsData.tripsData[index]
                 tripName = trip.title
                 guard let data = trip.image, let imageToEdit = UIImage(data: data) else {return}
+                inputImage = imageToEdit
                 image = Image(uiImage: imageToEdit)
             }
         }
