@@ -125,6 +125,7 @@ struct ActivitiesView: View {
                         
                         Button("Add Activity") {
                             withAnimation(.easeInOut(duration: 0.25)) {
+                                actitvityToEdit = nil
                                 showingAddActivityView.toggle()
                             }
                         }

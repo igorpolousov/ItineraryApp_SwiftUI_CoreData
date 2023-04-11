@@ -9,14 +9,18 @@ import UIKit
 
 class ActivityFunctions {
     // create activity
-    static func createActivity(at tripIndex: Int, for dayIndex: Int, activityTitle: String, activitySubTitle: String, activityType: Int32, coreDataStack: CoreDataStack) {
+    static func createActivity(at tripIndex: Int, for dayIndex: Int, activityTitle: String, activitySubTitle: String, activityType: Int32, coreDataStack: CoreDataStack, activityIndex: Int? = nil) {
         let activityModel = ActivityModel(context: coreDataStack.managedContext)
         activityModel.title = activityTitle
         activityModel.subtitle = activitySubTitle
         activityModel.actitvityType = activityType
         activityModel.id = UUID()
         let dayModel = TripsData.trips[tripIndex].dayModels?[dayIndex] as? DayModel
-        dayModel?.addToActivityModels(activityModel)
+        if activityIndex != nil {
+            dayModel?.insertIntoActivityModels(activityModel, at: activityIndex ?? 0)
+        } else {
+            dayModel?.addToActivityModels(activityModel)
+        }
         coreDataStack.saveContext()
         
     }
@@ -29,11 +33,10 @@ class ActivityFunctions {
     }
     
     // update activity
-    static func updateActivity(at tripIndex: Int, for dayIndex: Int,activityIndex: Int, using activityModel: ActivityModel, coreDataStack: CoreDataStack) {
-        print("DAY INDEX \(dayIndex)")
-        guard let dayModel = TripsData.trips[tripIndex].dayModels?[dayIndex] as? DayModel else {return}
-              //let activityIndex = dayModel.activityModels?.index(of: activityModel)
-        dayModel.replaceActivityModels(at: activityIndex, with: activityModel)
+    static func updateActivity(at tripIndex: Int, for dayIndex: Int, activityIndex: Int, using activityModel: ActivityModel, coreDataStack: CoreDataStack) {
+        let dayModel = TripsData.trips[tripIndex].dayModels?[dayIndex] as? DayModel
+        dayModel?.removeFromActivityModels(at: activityIndex)
+        createActivity(at: tripIndex, for: dayIndex, activityTitle: activityModel.title ?? "", activitySubTitle: activityModel.subtitle ?? "", activityType: activityModel.actitvityType, coreDataStack: coreDataStack,activityIndex: activityIndex)
         coreDataStack.saveContext()
         
     }

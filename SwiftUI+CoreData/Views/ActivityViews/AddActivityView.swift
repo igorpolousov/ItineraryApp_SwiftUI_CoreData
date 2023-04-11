@@ -137,28 +137,25 @@ struct AddActivityView: View {
                             withAnimation(.easeIn(duration: 0.25)) {
                                 showingAlert.toggle()
                             }
+                        } else if activityToEdit != nil {
+                            activityToEdit?.title = activityDescription
+                            activityToEdit?.subtitle = additionalDescription
+                            activityToEdit?.actitvityType = activityType.rawValue
+                            ActivityFunctions.updateActivity(at: tripIndex, for: dayIndex ?? 0, activityIndex: activityIndex ?? 0, using: activityToEdit!, coreDataStack: coreDataStack)
                         } else {
-                            if  activityToEdit != nil {
-                                activityToEdit?.title = activityDescription
-                                activityToEdit?.subtitle = additionalDescription
-                                activityToEdit?.actitvityType = activityType.rawValue
-                                ActivityFunctions.updateActivity(at: tripIndex, for: dayIndex ?? 0, activityIndex: activityIndex ?? 0, using: activityToEdit!, coreDataStack: coreDataStack)
-                            } else {
-                                if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
-                                    for dayModel in dayModels {
-                                        if dayModel.title?.dateFormatter() == selectedDate {
-                                            let dayIndex = dayModels.firstIndex(of: dayModel)!
-                                            ActivityFunctions.createActivity(at: tripIndex, for: dayIndex, activityTitle: activityDescription, activitySubTitle: additionalDescription, activityType: activityType.rawValue, coreDataStack: coreDataStack)
-                                        }
+                            if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
+                                for dayModel in dayModels {
+                                    if dayModel.title?.dateFormatter() == selectedDate {
+                                        let dayIndex = dayModels.firstIndex(of: dayModel)!
+                                        ActivityFunctions.createActivity(at: tripIndex, for: dayIndex, activityTitle: activityDescription, activitySubTitle: additionalDescription, activityType: activityType.rawValue, coreDataStack: coreDataStack)
                                     }
                                 }
                             }
-                            withAnimation(.easeInOut(duration: 0.25)) {
-                                showingAddActivityView.toggle()
-                            }
-                            activityToEdit = nil
                         }
-                        //onEnd()
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            showingAddActivityView.toggle()
+                        }
+                        
                     }
                     .modifier(PopUpButton(cornerRadius: 10))
                     .alert(isPresented: $showingAlert) {

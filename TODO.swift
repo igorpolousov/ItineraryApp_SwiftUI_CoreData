@@ -12,7 +12,7 @@
  
  - Activities and days List width need correction( make wider)
  - change reordering activity on drag and drop activity
- - updating after changing data in activity issue
+ 
 
  */
 
