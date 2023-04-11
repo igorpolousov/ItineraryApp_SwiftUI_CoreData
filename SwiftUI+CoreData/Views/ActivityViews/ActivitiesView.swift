@@ -16,10 +16,13 @@ struct ActivitiesView: View {
     @EnvironmentObject var tripsData: TripsData
     @EnvironmentObject var coreDataStack: CoreDataStack
     
+    @State var actitvityToEdit: ActivityModel?
     var title: String
     var imageData: Data?
     var image: Image?
     var tripIndex: Int
+    @State var dayIndex: Int?
+    @State var activityIndexToEdit: Int?
     
     var body: some View {
         ZStack {
@@ -66,7 +69,15 @@ struct ActivitiesView: View {
                                                 // edit code here
                                                 Button {
                                                     // Showing "Add activity view" with "Edit activity" label
-                                                    ActivityFunctions.updateActivity(at: tripIndex, for: dayIndex ?? 0, using: activity, coreDataStack: coreDataStack)
+                                                    withAnimation(.easeInOut(duration: 0.25)) {
+                                                        showingAddActivityView.toggle()
+                                                    }
+                                                    let dayModel = tripsData.tripsData[tripIndex].dayModels?[dayIndex ?? 0] as! DayModel
+                                                    let activityModels = dayModel.activityModels
+                                                    activityIndexToEdit = activityModels?.index(of: activity)
+                                                    actitvityToEdit = activity
+                                                    self.dayIndex = dayIndex
+                                                  
                                                 } label: {
                                                     HStack {
                                                         Image("pencil").foregroundColor(.white)
@@ -131,7 +142,7 @@ struct ActivitiesView: View {
             if showingAddActivityView {
                 if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
                     let firstDate = dayModels.first?.title?.dateFormatter() ?? ""
-                    AddActivityView(selectedDate: firstDate, showingAddActivityView: $showingAddActivityView, tripIndex:tripIndex, onEnd: {})
+                    AddActivityView(selectedDate: firstDate, showingAddActivityView: $showingAddActivityView,  activityToEdit: actitvityToEdit, tripIndex:tripIndex, dayIndex: dayIndex, activityIndex: activityIndexToEdit )
                 }
             }
         }

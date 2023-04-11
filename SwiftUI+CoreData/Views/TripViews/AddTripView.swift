@@ -93,7 +93,9 @@ struct AddTripView: View {
                                         })
                                     }
                                 }
-                                showingAddTripView.toggle()
+                                withAnimation(.easeInOut(duration: 0.25)) {
+                                    showingAddTripView.toggle()
+                                }
                                 tripIndexToEdit = nil
                             }
                         }

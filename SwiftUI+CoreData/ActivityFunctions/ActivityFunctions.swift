@@ -29,9 +29,10 @@ class ActivityFunctions {
     }
     
     // update activity
-    static func updateActivity(at tripIndex: Int, for dayIndex: Int, using activityModel: ActivityModel, coreDataStack: CoreDataStack) {
-        guard let dayModel = TripsData.trips[tripIndex].dayModels?[dayIndex] as? DayModel,
-              let activityIndex = dayModel.activityModels?.index(of: activityModel) else {return}
+    static func updateActivity(at tripIndex: Int, for dayIndex: Int,activityIndex: Int, using activityModel: ActivityModel, coreDataStack: CoreDataStack) {
+        print("DAY INDEX \(dayIndex)")
+        guard let dayModel = TripsData.trips[tripIndex].dayModels?[dayIndex] as? DayModel else {return}
+              //let activityIndex = dayModel.activityModels?.index(of: activityModel)
         dayModel.replaceActivityModels(at: activityIndex, with: activityModel)
         coreDataStack.saveContext()
         

@@ -13,6 +13,7 @@ struct AddActivityView: View {
     @State private var activityDescription: String = ""
     @State private var additionalDescription: String = ""
     @State var selectedDate: String = ""
+    @State private var viewName: String = "Add Activity"
     
     @Binding  var showingAddActivityView: Bool
     @EnvironmentObject var coreDataStack: CoreDataStack
@@ -25,12 +26,12 @@ struct AddActivityView: View {
     @State private var flightTapped: Bool = false
     @State private var activityType: ActivityType = .hotel
    
+    @State var activityToEdit: ActivityModel?
     var tripIndex: Int
-    //var dayIndex: Int = 0
-    var onEnd: ()->()
+    var dayIndex: Int?
+    var activityIndex: Int?
     
     var body: some View {
-        
         ZStack {
             Color.black
                 .opacity(0.45)
@@ -42,7 +43,7 @@ struct AddActivityView: View {
             
             VStack {
                 
-                Text("Add Activity")
+                Text(viewName)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .frame(height: 40)
                     .padding(.leading, 30)
@@ -125,7 +126,7 @@ struct AddActivityView: View {
                         withAnimation(.easeInOut(duration: 0.25)) {
                             showingAddActivityView.toggle()
                         }
-                        onEnd()
+                        //onEnd()
                     }
                     .modifier(PopUpButton( cornerRadius: 10))
                     
@@ -134,23 +135,31 @@ struct AddActivityView: View {
                     Button("Save") {
                         // Update trip Activity
                         if activityDescription == "" {
-                            showingAlert.toggle()
+                            withAnimation(.easeIn(duration: 0.25)) {
+                                showingAlert.toggle()
+                            }
                         } else {
-                            if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
-                                print(dayModels)
-                                for dayModel in dayModels {
-                                    if dayModel.title?.dateFormatter() == selectedDate {
-                                        let dayIndex = dayModels.firstIndex(of: dayModel)!
-                                        ActivityFunctions.createActivity(at: tripIndex, for: dayIndex, activityTitle: activityDescription, activitySubTitle: additionalDescription, activityType: activityType.rawValue, coreDataStack: coreDataStack)
+                            if let activityToEdit {
+                                activityToEdit.title = activityDescription
+                                activityToEdit.subtitle = additionalDescription
+                                activityToEdit.actitvityType = activityType.rawValue
+                                ActivityFunctions.updateActivity(at: tripIndex, for: dayIndex ?? 0, activityIndex: activityIndex ?? 0, using: activityToEdit, coreDataStack: coreDataStack)
+                            } else {
+                                if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
+                                    for dayModel in dayModels {
+                                        if dayModel.title?.dateFormatter() == selectedDate {
+                                            let dayIndex = dayModels.firstIndex(of: dayModel)!
+                                            ActivityFunctions.createActivity(at: tripIndex, for: dayIndex, activityTitle: activityDescription, activitySubTitle: additionalDescription, activityType: activityType.rawValue, coreDataStack: coreDataStack)
+                                        }
                                     }
                                 }
                             }
                             withAnimation(.easeInOut(duration: 0.25)) {
                                 showingAddActivityView.toggle()
                             }
+                            activityToEdit = nil
                         }
-                       
-                        onEnd()
+                        //onEnd()
                     }
                     .modifier(PopUpButton(cornerRadius: 10))
                     .alert(isPresented: $showingAlert) {
@@ -161,6 +170,26 @@ struct AddActivityView: View {
             }
             .padding(.bottom, 190)
             
+        }
+        .onAppear {
+            if activityToEdit != nil {
+                viewName = " Edit Activity"
+                activityDescription = activityToEdit?.title ?? ""
+                additionalDescription = activityToEdit?.subtitle ?? ""
+                activityType = ActivityType(rawValue: activityToEdit?.actitvityType ?? 0 ) ?? .hotel
+                switch activityType {
+                case .hotel:
+                    hotelTapped = true
+                case .taxi:
+                    taxiTapped = true
+                case .train:
+                    trainTapped = true
+                case .food:
+                    foodTapped = true
+                case .flight:
+                    flightTapped = true
+                }
+            }
         }
     }
     
