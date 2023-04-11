@@ -15,16 +15,15 @@ struct ActivitiesView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var tripsData: TripsData
     @EnvironmentObject var coreDataStack: CoreDataStack
-    
-    @State var actitvityToEdit: ActivityModel?
+
     var title: String
     var imageData: Data?
     var image: Image?
+    
     var tripIndex: Int
-    @State private var editButtonName: String = "Edit"
-    @State private var isOnEditingMode: Bool = false
     @State var dayIndex: Int?
     @State var activityIndexToEdit: Int?
+    @State var actitvityToEdit: ActivityModel?
     
     var body: some View {
         ZStack {
@@ -68,7 +67,6 @@ struct ActivitiesView: View {
 
                                             }
                                             .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                                // edit code here
                                                 Button {
                                                     // Showing "Add activity view" with "Edit activity" label
                                                     withAnimation(.easeInOut(duration: 0.25)) {
@@ -90,6 +88,11 @@ struct ActivitiesView: View {
                                     }
                                     .listRowSeparator(.hidden)
                                     .listRowBackground(Color.clear)
+                                }.onMove { source, index in
+                                    activities.move(fromOffsets: source, toOffset: index)
+                                    let dayModel = tripsData.tripsData[tripIndex].dayModels![dayIndex!] as! DayModel
+                                    dayModel.activityModels = NSOrderedSet(array: activities)
+    
                                 }
                             }
                         }
@@ -153,18 +156,11 @@ struct ActivitiesView: View {
         .toolbarBackground(Color(uiColor: Theme.backgroundColor!), for: .navigationBar)
         .toolbar {
             
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(editButtonName) {
-                    isOnEditingMode.toggle()
-                    if isOnEditingMode {
-                        editButtonName = "Done"
-                    } else {
-                        editButtonName = "Edit"
-                    }
-                }
-                .foregroundColor(Color(Theme.tintColor!))
-                .font(Font(Theme.dayFont!))
-            }
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                EditButton()
+//                    .foregroundColor(Color(Theme.tintColor!))
+//                    .font(Font(Theme.dayFont!))
+//            };
             
             // Navigation bar title
             ToolbarItem(placement: .principal) {
@@ -209,6 +205,10 @@ struct ActivitiesView: View {
         default:
             return "hotel"
         }
+    }
+    
+    func move(from source: IndexSet, to destination: Int) {
+        
     }
 }
 

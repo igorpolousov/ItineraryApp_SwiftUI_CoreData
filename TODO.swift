@@ -11,7 +11,8 @@
  MARK: TO_DO
  
  - Activities and days List width need correction( make wider)
- - add reorder funtion to activities
+ - date picker issue
+ - updating after changing data in activity issue
 
  */
 
@@ -23,6 +24,7 @@
  - List view works only with @Published objects to automatically update data
  - Absence of cool features that presented in UIKit. To use features of UIKit need to create separate view with coordinator class
  - Picker doesn't work with optional values. safe unwrap values before use in Picker
+ - There is no inbox implementation in List to move row between sections
  */
 
 
