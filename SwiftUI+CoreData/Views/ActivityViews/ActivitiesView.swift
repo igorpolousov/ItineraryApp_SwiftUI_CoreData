@@ -14,6 +14,7 @@ struct ActivitiesView: View {
     @State private var showingActionSheet = false
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var tripsData: TripsData
+    @EnvironmentObject var coreDataStack: CoreDataStack
     
     var title: String
     var imageData: Data?
@@ -43,6 +44,7 @@ struct ActivitiesView: View {
             List {
                 if let dayModels = tripsData.tripsData[tripIndex].dayModels?.array as? [DayModel] {
                     ForEach(dayModels) { dayModel in
+                        let dayIndex = tripsData.tripsData[tripIndex].dayModels?.index(of: dayModel)
                         Section(header: HeaderView(text: dayModel.title!.dateFormatter(), descriptionText: dayModel.subtitle!)) {
                             if let activities = dayModel.activityModels?.array as? [ActivityModel] {
                                 ForEach(activities) { activity in
@@ -51,7 +53,7 @@ struct ActivitiesView: View {
                                             .swipeActions(edge: .trailing,allowsFullSwipe: true ) {
                                                 // delete code here
                                                 Button(role: .destructive) {
-                                                    // action code
+                                                    ActivityFunctions.deleteActivity(at: tripIndex, for: dayIndex ?? 0, using: activity, coreDataStack: coreDataStack)
                                                 } label: {
                                                     HStack {
                                                         Image("delete").foregroundColor(.white)
@@ -63,7 +65,8 @@ struct ActivitiesView: View {
                                             .swipeActions(edge: .leading, allowsFullSwipe: true) {
                                                 // edit code here
                                                 Button {
-                                                    // action code
+                                                    // Showing "Add activity view" with "Edit activity" label
+                                                    ActivityFunctions.updateActivity(at: tripIndex, for: dayIndex ?? 0, using: activity, coreDataStack: coreDataStack)
                                                 } label: {
                                                     HStack {
                                                         Image("pencil").foregroundColor(.white)
