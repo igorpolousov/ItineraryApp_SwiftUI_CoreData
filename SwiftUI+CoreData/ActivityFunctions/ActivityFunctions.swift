@@ -41,7 +41,7 @@ class ActivityFunctions {
   
     
     // reorder activity
-    static func reorderActivity() {
+    static func reorderActivity(tripIndex: Int, oldDayIndex: Int, newDayIndex: Int, newActivityIndex: Int, activityModel: ActivityModel, coreDataStack: CoreDataStack) {
         
     }
 }

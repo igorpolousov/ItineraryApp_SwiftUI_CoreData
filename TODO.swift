@@ -11,8 +11,6 @@
  MARK: TO_DO
  
  - Activities and days List width need correction( make wider)
- - add delete function to activities
- - add edit function to activities
  - add reorder funtion to activities
 
  */

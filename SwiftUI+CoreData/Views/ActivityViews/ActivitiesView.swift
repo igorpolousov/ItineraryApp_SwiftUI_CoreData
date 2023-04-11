@@ -21,6 +21,8 @@ struct ActivitiesView: View {
     var imageData: Data?
     var image: Image?
     var tripIndex: Int
+    @State private var editButtonName: String = "Edit"
+    @State private var isOnEditingMode: Bool = false
     @State var dayIndex: Int?
     @State var activityIndexToEdit: Int?
     
@@ -49,7 +51,7 @@ struct ActivitiesView: View {
                     ForEach(dayModels) { dayModel in
                         let dayIndex = tripsData.tripsData[tripIndex].dayModels?.index(of: dayModel)
                         Section(header: HeaderView(text: dayModel.title!.dateFormatter(), descriptionText: dayModel.subtitle!)) {
-                            if let activities = dayModel.activityModels?.array as? [ActivityModel] {
+                            if var activities = dayModel.activityModels?.array as? [ActivityModel] {
                                 ForEach(activities) { activity in
                                     ZStack {
                                         ActivityView(title: activity.title ?? "", subtitle: activity.subtitle ?? "", actitvityImage: setupImage(activityType: activity.actitvityType))
@@ -150,6 +152,20 @@ struct ActivitiesView: View {
         .navigationBarBackButtonHidden(true)
         .toolbarBackground(Color(uiColor: Theme.backgroundColor!), for: .navigationBar)
         .toolbar {
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(editButtonName) {
+                    isOnEditingMode.toggle()
+                    if isOnEditingMode {
+                        editButtonName = "Done"
+                    } else {
+                        editButtonName = "Edit"
+                    }
+                }
+                .foregroundColor(Color(Theme.tintColor!))
+                .font(Font(Theme.dayFont!))
+            }
+            
             // Navigation bar title
             ToolbarItem(placement: .principal) {
                 Text(title)
