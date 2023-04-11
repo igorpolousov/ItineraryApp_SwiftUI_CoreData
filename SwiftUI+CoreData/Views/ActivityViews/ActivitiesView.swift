@@ -48,6 +48,29 @@ struct ActivitiesView: View {
                                 ForEach(activities) { activity in
                                     ZStack {
                                         ActivityView(title: activity.title ?? "", subtitle: activity.subtitle ?? "", actitvityImage: setupImage(activityType: activity.actitvityType))
+                                            .swipeActions(edge: .trailing,allowsFullSwipe: true ) {
+                                                // delete code here
+                                                Button(role: .destructive) {
+                                                    // action code
+                                                } label: {
+                                                    HStack {
+                                                        Image("delete").foregroundColor(.white)
+                                                        Text("Delete")
+                                                    }
+                                                }.tint(Color(Theme.tintColor!))
+
+                                            }
+                                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                                // edit code here
+                                                Button {
+                                                    // action code
+                                                } label: {
+                                                    HStack {
+                                                        Image("pencil").foregroundColor(.white)
+                                                        Text("Edit")
+                                                    }
+                                                }.tint(Color(Theme.swipeEditColor!))
+                                            }
                                     }
                                     .listRowSeparator(.hidden)
                                     .listRowBackground(Color.clear)

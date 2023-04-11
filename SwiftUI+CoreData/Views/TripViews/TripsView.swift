@@ -34,7 +34,7 @@ struct TripsView: View {
                                         TripsListRow(title: trip.title, imageData: trip.image)
                                     // Swiping actions
                                         // Delete trip action
-                                        .swipeActions(edge: .trailing) {
+                                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                             Button(role: .destructive) {
                                                 let index = tripsData.tripsData.firstIndex(of: trip)
                                                 TripFunctions.deleteTrip(index: index!, coreDataStack: coreDataStack, completion: {tripsData.tripsData = TripsData.trips}) 
@@ -47,7 +47,7 @@ struct TripsView: View {
                                             }.tint(Color(Theme.tintColor!))
                                         }
                                         // Edit trip action
-                                        .swipeActions(edge: .leading) {
+                                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
                                             Button {
                                                 // Show "AddTripView" with "Edit trip" label
                                                 showingAddTripView.toggle()
