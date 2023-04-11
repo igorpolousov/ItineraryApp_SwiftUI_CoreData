@@ -11,7 +11,7 @@
  MARK: TO_DO
  
  - Activities and days List width need correction( make wider)
- - date picker issue
+ - change reordering activity on drag and drop activity
  - updating after changing data in activity issue
 
  */

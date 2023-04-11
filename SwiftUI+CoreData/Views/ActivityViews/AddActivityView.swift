@@ -53,7 +53,7 @@ struct AddActivityView: View {
                     Picker("Choose date", selection: $selectedDate) {
                         ForEach(dayModels, id: \.self) { dayModel in
                             if let title = dayModel.title {
-                                Text(title.dateFormatter()).tag(title)
+                                Text(title.dateFormatter()).tag(title.dateFormatter())
                                     .font(Font(Theme.readFont!))
                             }
                         }
@@ -126,7 +126,6 @@ struct AddActivityView: View {
                         withAnimation(.easeInOut(duration: 0.25)) {
                             showingAddActivityView.toggle()
                         }
-                        //onEnd()
                     }
                     .modifier(PopUpButton( cornerRadius: 10))
                     
@@ -139,11 +138,11 @@ struct AddActivityView: View {
                                 showingAlert.toggle()
                             }
                         } else {
-                            if let activityToEdit {
-                                activityToEdit.title = activityDescription
-                                activityToEdit.subtitle = additionalDescription
-                                activityToEdit.actitvityType = activityType.rawValue
-                                ActivityFunctions.updateActivity(at: tripIndex, for: dayIndex ?? 0, activityIndex: activityIndex ?? 0, using: activityToEdit, coreDataStack: coreDataStack)
+                            if  activityToEdit != nil {
+                                activityToEdit?.title = activityDescription
+                                activityToEdit?.subtitle = additionalDescription
+                                activityToEdit?.actitvityType = activityType.rawValue
+                                ActivityFunctions.updateActivity(at: tripIndex, for: dayIndex ?? 0, activityIndex: activityIndex ?? 0, using: activityToEdit!, coreDataStack: coreDataStack)
                             } else {
                                 if let dayModels = TripsData.trips[tripIndex].dayModels?.array as? [DayModel] {
                                     for dayModel in dayModels {
