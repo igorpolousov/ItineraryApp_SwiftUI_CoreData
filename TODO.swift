@@ -11,7 +11,7 @@
  MARK: TO_DO
  
  - Activities and days List width need correction( make wider)
- - Add ask user permission to access to photo library
+ 
  */
 
 

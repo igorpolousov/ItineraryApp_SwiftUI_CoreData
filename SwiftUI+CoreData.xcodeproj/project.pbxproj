@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2296E3429E6AF79006916DE /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2296E3329E6AF79006916DE /* PhotoLibraryManager.swift */; };
 		C22EB7F129910BD400D94463 /* AddDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7F029910BD400D94463 /* AddDayView.swift */; };
 		C22EB7F329910BEA00D94463 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7F229910BEA00D94463 /* AddActivityView.swift */; };
 		C22EB7F829910CEB00D94463 /* PopUpViewButtonsModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EB7F729910CEB00D94463 /* PopUpViewButtonsModifier.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C2296E3329E6AF79006916DE /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoLibraryManager.swift; path = "SwiftUI+CoreData/PhotoLibraryManager.swift"; sourceTree = SOURCE_ROOT; };
 		C22EB7F029910BD400D94463 /* AddDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDayView.swift; sourceTree = "<group>"; };
 		C22EB7F229910BEA00D94463 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
 		C22EB7F729910CEB00D94463 /* PopUpViewButtonsModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewButtonsModifier.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			children = (
 				C22EB7F9299135EE00D94463 /* ImagePicker.swift */,
 				C2E43D5C29A39DA800A2C4F1 /* ImagePickerWithCrop.swift */,
+				C2296E3329E6AF79006916DE /* PhotoLibraryManager.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				C22EB7FA299135EE00D94463 /* ImagePicker.swift in Sources */,
 				C2E43D6629A4CE2A00A2C4F1 /* TripModel+CoreDataClass.swift in Sources */,
 				C25D8C67298D03070035B7ED /* TripsView.swift in Sources */,
+				C2296E3429E6AF79006916DE /* PhotoLibraryManager.swift in Sources */,
 				C22EB7F129910BD400D94463 /* AddDayView.swift in Sources */,
 				C22EB7FE2992792600D94463 /* PlusButtonModifier.swift in Sources */,
 				C22EB8092993905700D94463 /* DateExtension.swift in Sources */,
@@ -525,7 +529,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SwiftUI-CoreData-Info.plist";
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow to use photos";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -558,7 +563,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SwiftUI-CoreData-Info.plist";
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow to use photos";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

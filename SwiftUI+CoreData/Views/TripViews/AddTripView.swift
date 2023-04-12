@@ -16,6 +16,8 @@ struct AddTripView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State private var showingAlert = false
+    @State private var showingPhotoAccessAlert = false
+    @StateObject var photoLibraryManager = PhotoLibraryManager()
     
     @EnvironmentObject var tripsData: TripsData
     @EnvironmentObject var coreDataStack: CoreDataStack
@@ -114,14 +116,29 @@ struct AddTripView: View {
                     loadImage()
                 }
                 .sheet(isPresented: $showingImagePicker) {
-                    ImagePickerWithCrop(image: {image in
-                        inputImage = image
-                        showingImagePicker.toggle()
-                    })
+                    if photoLibraryManager.photoLibraryPermissinGranted {
+                        ImagePickerWithCrop(image: {image in
+                            inputImage = image
+                            showingImagePicker.toggle()
+                        })
+                    } else {
+                        VStack {
+                            Spacer()
+                            Text("Access to photo library not granted")
+                            
+                                .cornerRadius(20)
+                            Spacer()
+                            Button("Provide accees to photo library") {
+                                photoLibraryManager.photoLibraryPermissinGranted = true
+                            }
+                            Spacer()
+                        }
+                    }
                 }
             }
         }
         .onAppear{
+            photoLibraryManager.requestPermission()
             if let index = tripIndexToEdit {
                 viewName = "  Edit trip"
                 let trip = tripsData.tripsData[index]
@@ -138,4 +155,5 @@ struct AddTripView: View {
         image = Image(uiImage: inputImage)
     }
 }
+
 
