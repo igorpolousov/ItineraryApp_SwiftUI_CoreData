@@ -11,9 +11,7 @@
  MARK: TO_DO
  
  - Activities and days List width need correction( make wider)
- - change reordering activity on drag and drop activity
- 
-
+ - Add ask user permission to access to photo library
  */
 
 
@@ -24,7 +22,7 @@
  - List view works only with @Published objects to automatically update data
  - Absence of cool features that presented in UIKit. To use features of UIKit need to create separate view with coordinator class
  - Picker doesn't work with optional values. safe unwrap values before use in Picker
- - There is no inbox implementation in List to move row between sections
+ - There is no inbox implementation in List to move row between sections, drag and drop also. Only between views. if needed sections Use another type of view instead of Section()
  */
 
 
