@@ -84,6 +84,7 @@
 		C25D8C9E298D25490035B7ED /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C29B996B2993C82600441788 /* TODO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
 		C29B996D2993E7BB00441788 /* TripsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsListRow.swift; sourceTree = "<group>"; };
+		C2A6801229E7F4BC008AAB2F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C2E43D5C29A39DA800A2C4F1 /* ImagePickerWithCrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerWithCrop.swift; sourceTree = "<group>"; };
 		C2E43D5E29A4CE2A00A2C4F1 /* DayModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C2E43D5F29A4CE2A00A2C4F1 /* DayModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -176,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				C29B996B2993C82600441788 /* TODO.swift */,
+				C2A6801229E7F4BC008AAB2F /* README.md */,
 				C25D8C63298D03070035B7ED /* SwiftUI+CoreData */,
 				C25D8C7D298D12CD0035B7ED /* SwiftUI-CoreData-Info.plist */,
 				C25D8C62298D03070035B7ED /* Products */,
