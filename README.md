@@ -16,5 +16,14 @@
  - Absence of cool features that presented in UIKit. To use features of UIKit need to create separate view with coordinator class
  - Picker doesn't work with optional values. safe unwrap values before use in Picker
  - There is no inbox implementation in List to move row between sections, drag and drop also. Only between views. if needed sections Use another type of view instead of Section()
+ 
+ ## Adds
+ 
+ Как было подмечено на одной конференции, что те же принципы, которые были в UIKit, они же и остались, только назваши из по другому:
+ Singletone -> Enviroment
+ View  Class -> Structs
+ Data  Structs -> Class
+ 
+ SwiftUI по прежнему требует использования предыдущих фреймворков и поэтому нужен бриджинг) 
   
 
