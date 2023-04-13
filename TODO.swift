@@ -14,6 +14,7 @@
  - add alert if trying to create  day or action without name
  - add Day functions
  - add Activity functions
+ - you hoo 
  
  
  */
