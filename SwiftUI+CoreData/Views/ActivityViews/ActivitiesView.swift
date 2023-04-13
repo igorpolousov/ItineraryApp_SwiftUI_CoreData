@@ -96,9 +96,11 @@ struct ActivitiesView: View {
                                 }
                             }
                         }
+                        
                     }
                 }
             }
+            .frame(maxWidth: 400)
             .scrollContentBackground(.hidden)
             
             // Floating action button
